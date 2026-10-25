@@ -13,3 +13,4 @@ createFiles.sh
 .clangd
 
 # Others (added individually)
+compile_commands.json
