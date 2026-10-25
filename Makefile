@@ -3,7 +3,8 @@ CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= libft.a
 SRCS	= 	ft_isalpha.c \
-		ft_isdigit.c
+		ft_isdigit.c \
+		ft_isalnum.c
 
 OBJS	= $(addprefix objs/, $(SRCS:.c=.o))
 
