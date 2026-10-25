@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/25 15:13:47 by marisous          #+#    #+#             */
+/*   Updated: 2026/10/25 15:35:04 by marisous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <stdio.h>
 
 #include "libft.h"
 #include <ctype.h>
 
-int main(void)
+int	main(void)
 {
-    printf("Main with no args.\n");
-	char *str = "Take1\b\n";
+	int	test;
 
-	while (*str != '\0')
+	test = 0;
+	while (test < 256)
 	{
-		printf("[%c]: [%d] is%s alpha.\n",
-			   *str,
-			   *str,
-			   ft_isalpha(*str) ? "" : " not");
-		str++;
+		if (!!ft_isalpha(test) != !!isalpha(test))
+		{
+			printf("FAIL: Value d[%d] c[%c] did not pass the test:\
+%d vs %d (correct)\n", test, test, ft_isalpha(test), !!isalpha(test));
+			return (1);
+		}
+		test++;
 	}
-	
-
-    return (0);
+	printf("ft_isalpha: PASS\n");
+	return (0);
 }

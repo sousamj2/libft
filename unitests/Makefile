@@ -5,7 +5,7 @@ ASAN	= 1 # Use 1 to run address and leak sanitization. 0 otherwise.
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I../
-LIBS	+= -L.. -lft
+LIBS	+= -L.. -lft -lc
 PREXEC	= ulimit -v 10240; timeout 5s 
 
 ifeq ($(VALG),1)
