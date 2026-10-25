@@ -6,10 +6,9 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:41:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 16:54:17 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/25 17:14:10 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
 int	ft_isprint(int c)
 {

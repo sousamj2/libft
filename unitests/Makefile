@@ -1,28 +1,42 @@
-VALG	= 0 # Use 1 to run valgrind and 0 otherwise
-ASAN	= 1 # Use 1 to run address and leak sanitization. 0 otherwise.
-# DEBUG	= -g -O0 # Comment if you don't want to run debug mode.
+VALG	= 0
+ASAN	= 0
+DEBUG	= -g -O0
 
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I../
 LIBS	+= -L.. -lft -lc
-PREXEC	= ulimit -v 10240; timeout 5s 
+PREXEC	= ulimit -v 131072; timeout 5s
 
 ifeq ($(VALG),1)
 	EXEC	= valgrind --leak-check=full --error-exitcode=1
+	PREXEC	= ulimit -v 262144; timeout 5s
 else
 	ifeq ($(ASAN),1)
 		COMP	= -fsanitize=address,leak
-		PREXEC	+= ASAN_OPTIONS=halt_on_error=1
+		PREXEC	= timeout 5s env ASAN_OPTIONS=halt_on_error=1
 	endif
 endif
 
-UNITS	= isalpha isdigit isalnum isascii isprint # ...
+RAND_UNITS	= 	strlen
+
+UNITS	= 	isalpha isdigit isalnum isascii isprint \
+		strlen # ...
 
 all: $(UNITS)
 
+test:
+	@echo UNITS: $(UNITS)
+	@echo RAND_UNITS: $(RAND_UNITS)
+	@echo VALG: $(VALG)
+	@echo ASAN: $(ASAN)
+	@echo EXEC: $(EXEC)
+	@echo COMP: $(COMP)
+	@echo DEBUG: $(DEBUG)
+norm $(addprefix build_, $(RAND_UNITS)): AUX = ft_random.c
+
 build_%: ft_%.c
-	$(CC) $(CFLAGS) $(DEBUG) $(COMP) $< -o ./run_$* $(LIBS)
+	$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
 %: build_%
 	$(PREXEC) $(EXEC) ./run_$@
@@ -39,7 +53,7 @@ eclean:
 	$(MAKE) clean
 
 norm:
-	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS)))
+	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS))) $(AUX)
 
 .PHONY: all build eclean clean norm
 

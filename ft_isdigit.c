@@ -6,11 +6,9 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:52:26 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 16:10:06 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/25 17:14:02 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isdigit(int c)
 {
