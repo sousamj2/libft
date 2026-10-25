@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:13:47 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 16:26:09 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:50:05 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -23,7 +23,7 @@ int	main(void)
 	{
 		if (!!ft_isdigit(test) != !!isdigit(test))
 		{
-			printf("FAIL: Value d[%d] c[%c] did not pass the test:\
+			printf("isdigit FAIL: Value d[%d] c[%c] did not pass the test: \
 %d vs %d (correct)\n", test, test, ft_isdigit(test), !!isdigit(test));
 			return (1);
 		}

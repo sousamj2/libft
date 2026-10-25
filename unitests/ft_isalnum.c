@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:13:47 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 16:07:40 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:49:51 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -23,7 +23,7 @@ int	main(void)
 	{
 		if (!!ft_isalnum(test) != !!isalnum(test))
 		{
-			printf("FAIL: Value d[%d] c[%c] did not pass the test:\
+			printf("ft_isalnum FAIL: Value d[%d] c[%c] did not pass the test: \
 %d vs %d (correct)\n", test, test, ft_isalnum(test), !!isalnum(test));
 			return (1);
 		}

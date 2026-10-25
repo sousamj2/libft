@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:13:47 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 16:00:24 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:49:55 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -23,7 +23,7 @@ int	main(void)
 	{
 		if (!!ft_isalpha(test) != !!isalpha(test))
 		{
-			printf("FAIL: Value d[%d] c[%c] did not pass the test:\
+			printf("isalpha FAIL: Value d[%d] c[%c] did not pass the test: \
 %d vs %d (correct)\n", test, test, ft_isalpha(test), !!isalpha(test));
 			return (1);
 		}

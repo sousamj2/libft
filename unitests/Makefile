@@ -17,7 +17,7 @@ else
 	endif
 endif
 
-UNITS	= isalpha isdigit isalnum isascii # ...
+UNITS	= isalpha isdigit isalnum isascii isprint # ...
 
 all: $(UNITS)
 
