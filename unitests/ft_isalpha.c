@@ -6,13 +6,13 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:13:47 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 15:35:04 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:00:24 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+#include <ctype.h>
 
 #include "libft.h"
-#include <ctype.h>
 
 int	main(void)
 {
