@@ -4,18 +4,24 @@ CFLAGS	= -Wall -Wextra -Werror
 NAME	= libft.a
 SRCS	= ft_isalpha.c
 
+OBJS	= $(addprefix objs/, $(SRCS:.c=.o))
 
-OBJS	= $(SRCS:.o=.c)
 
 all: $(NAME)
 
+test:
+	@echo NAME=$(NAME)
+	@echo OBJS=$(OBJS)
+	@echo SRCS=$(SRCS)
+
 $(NAME): $(OBJS)
-	# r for insert/replace object files.
-	# c for creating the file if it does not exist.
-	# s create the symbol index.
+	@# r for insert/replace object files.
+	@# c for creating the file if it does not exist.
+	@# s create the symbol index.
 	ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
+objs/%.o: %.c
+	@mkdir -p objs/
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
