@@ -17,7 +17,7 @@ else
 	endif
 endif
 
-UNITS	= isalpha isdigit isalnum # ...
+UNITS	= isalpha isdigit isalnum isascii # ...
 
 all: $(UNITS)
 
@@ -38,4 +38,9 @@ eclean:
 	bear -- make -B build
 	$(MAKE) clean
 
-.PHONY: all build eclean clean
+norm:
+	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS)))
+
+.PHONY: all build eclean clean norm
+
+
