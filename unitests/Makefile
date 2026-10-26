@@ -9,7 +9,7 @@ LIBS	+= -L.. -lft -lc
 PREXEC	= ulimit -v 131072; timeout 5s
 
 ifeq ($(VALG),1)
-	EXEC	= valgrind --leak-check=full --error-exitcode=1
+	EXEC	= valgrind --leak-check=full --error-exitcode=1 -s
 	PREXEC	= ulimit -v 262144; timeout 5s
 else
 	ifeq ($(ASAN),1)
@@ -18,12 +18,12 @@ else
 	endif
 endif
 
-RAND_UNITS	= 	strlen memset bzero memcpy
+RAND_UNITS	= 	strlen memset bzero memcpy memmove
 
-MEMO_UNITS	= 	memset bzero memcpy
+MEMO_UNITS	= 	memset bzero memcpy memmove
 
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
-		strlen memset bzero # ...
+		strlen memset bzero memmove # ...
 
 all: $(UNITS)
 

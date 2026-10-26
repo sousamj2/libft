@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:15:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 18:48:24 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/26 22:40:02 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val)
 	return (1);
 }
 
-int	ft_compare_memory(void *truth, void *test, t_size_t size_s)
+int	ft_compare_memory(void *truth, void *test, t_size_t size_s, char *src)
 {
 	t_size_t		index;
 	unsigned char	*ptr_tru;
@@ -50,8 +50,10 @@ int	ft_compare_memory(void *truth, void *test, t_size_t size_s)
 	{
 		if (*ptr_tes != *ptr_tru)
 		{
-			printf("test [%ud] truth [%ud]\n",
-				*ptr_tes, *ptr_tru);
+			printf("\n------------\n");
+			printf("  src: [%p] %s\n", src, src);
+			printf("test: [%p] %s\n", ptr_tes, ptr_tes);
+			printf("true: [%p] %s\n", ptr_tru, ptr_tru);
 			return (0);
 		}
 		index++;
@@ -60,3 +62,17 @@ int	ft_compare_memory(void *truth, void *test, t_size_t size_s)
 	}
 	return (1);
 }
+
+/* printf("Size is: %d\n", (int) size_s); */
+/* printf("index [%d] test [%d] truth [%d]\n", */
+/* 	(int) index, (int) *ptr_tes, (int) *ptr_tru); */
+/* printf("index [%d] test [%d] truth [%d]\n", */
+/* 	(int) index + 1, (int) *(ptr_tes + 1), (int)*(ptr_tru + 1)); */
+/* printf("index [%d] test [%d] truth [%d]\n", */
+/* 	(int)size_s - 1, */
+/* 	(int)*(ptr_tes + size_s - 1), */
+/* 	(int)*(ptr_tru + size_s - 1)); */
+/* printf("index [%d] test [%d] truth [%d]\n", */
+/* 	(int) size_s, */
+/* 	(int) *(ptr_tes + size_s), */
+/* 	(int) *(ptr_tru + size_s)); */
