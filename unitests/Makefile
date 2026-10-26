@@ -18,10 +18,10 @@ else
 	endif
 endif
 
-RAND_UNITS	= 	strlen memset
+RAND_UNITS	= 	strlen memset bzero
 
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
-		strlen memset # ...
+		strlen memset bzero # ...
 
 all: $(UNITS)
 

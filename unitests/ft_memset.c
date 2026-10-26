@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 15:49:35 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 17:15:09 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/26 17:32:40 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	ft_test_array(void)
 	const_byte = ft_rand(2048) - 1024;
 	arr1 = ft_rand_array(size_s);
 	arr2 = ft_rand_array(size_s);
-	arr1 = memset(arr1, const_byte, size_s * sizeof(int));
-	arr2 = ft_memset(arr2, const_byte, size_s * sizeof(int));
+	bzero(arr1, size_s * sizeof(int));
+	ft_bzero(arr2, size_s * sizeof(int));
 	retval = ft_compare_bytes(arr1, arr2, size_s * sizeof(int), const_byte);
 	free(arr1);
 	free(arr2);
