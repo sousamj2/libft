@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 19:28:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 21:56:07 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/26 17:15:43 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ char	*ft_rand_str(int size)
 	}
 	str[index] = '\0';
 	return (str);
+}
+
+int	*ft_rand_array(int size)
+{
+	int	*array;
+	int	index;
+
+	index = 0;
+	array = malloc((size) * sizeof(int));
+	while (index < size)
+	{
+		array[index] = rand() - RAND_MAX + rand();
+		index++;
+	}
+	return (array);
 }
