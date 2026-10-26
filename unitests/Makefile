@@ -18,7 +18,9 @@ else
 	endif
 endif
 
-RAND_UNITS	= 	strlen memset bzero
+RAND_UNITS	= 	strlen memset bzero memcpy
+
+MEMO_UNITS	= 	memset bzero memcpy
 
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
 		strlen memset bzero # ...
@@ -33,7 +35,9 @@ test:
 	@echo EXEC: $(EXEC)
 	@echo COMP: $(COMP)
 	@echo DEBUG: $(DEBUG)
-norm $(addprefix build_, $(RAND_UNITS)): AUX = ft_random.c
+norm $(addprefix build_, $(RAND_UNITS)): AUX += ft_random.c
+
+norm $(addprefix build_, $(MEMO_UNITS)): AUX += ft_memory.c
 
 build_%: ft_%.c
 	$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)

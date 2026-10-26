@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 17:28:51 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 17:54:26 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/26 18:41:54 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,6 @@ int		ft_rand(int limit);
 int		ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val);
 int		ft_test_string(void);
 int		ft_test_array(void);
-
-int	ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val)
-{
-	t_size_t		index;
-	unsigned char	*ptr_tru;
-	unsigned char	*ptr_tes;
-
-	index = 0;
-	ptr_tes = test;
-	ptr_tru = truth;
-	while (index < size_s)
-	{
-		if (*ptr_tes != *ptr_tru || *ptr_tes != (unsigned char) val)
-		{
-			printf("test [%x] truth [%x] val [%x]\n",
-				*ptr_tes, *ptr_tru, val);
-			printf("ft_bzero FAIL: ");
-			return (0);
-		}
-		index++;
-		ptr_tru++;
-		ptr_tes++;
-	}
-	return (1);
-}
 
 int	ft_test_string(void)
 {
@@ -93,6 +68,7 @@ int	main(void)
 {
 	int	test_i;
 
+	printf("ft_bzero");
 	srand(time(0));
 	test_i = 0;
 	while (test_i < 100)
@@ -101,6 +77,6 @@ int	main(void)
 			return (1);
 		test_i++;
 	}
-	printf("ft_bzero: PASS\n");
+	printf(": PASS\n");
 	return (0);
 }

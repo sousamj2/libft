@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 15:49:35 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 17:32:40 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/26 18:48:10 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,6 @@ int		ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val);
 int		ft_test_string(void);
 int		ft_test_array(void);
 
-int	ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val)
-{
-	t_size_t		index;
-	unsigned char	*ptr_tru;
-	unsigned char	*ptr_tes;
-
-	index = 0;
-	ptr_tes = test;
-	ptr_tru = truth;
-	while (index < size_s)
-	{
-		if (*ptr_tes != *ptr_tru || *ptr_tes != (unsigned char) val)
-		{
-			printf("ft_memset FAIL\n");
-			printf("test [%ud] truth [%ud] val [%ud]\n",
-				*ptr_tes, *ptr_tru, val);
-			return (0);
-		}
-		index++;
-		ptr_tru++;
-		ptr_tes++;
-	}
-	return (1);
-}
-
 int	ft_test_string(void)
 {
 	char	*str1;
@@ -63,6 +38,8 @@ int	ft_test_string(void)
 	str1 = memset(str1, const_byte, size_s * sizeof(char));
 	str2 = ft_memset(str2, const_byte, size_s * sizeof(char));
 	retval = ft_compare_bytes(str1, str2, size_s * sizeof(char), const_byte);
+	if (!retval)
+		printf("problem in strings.\n");
 	free(str1);
 	free(str2);
 	return (retval);
@@ -80,9 +57,11 @@ int	ft_test_array(void)
 	const_byte = ft_rand(2048) - 1024;
 	arr1 = ft_rand_array(size_s);
 	arr2 = ft_rand_array(size_s);
-	bzero(arr1, size_s * sizeof(int));
-	ft_bzero(arr2, size_s * sizeof(int));
+	arr1 = memset(arr1, const_byte, size_s * sizeof(int));
+	arr2 = ft_memset(arr2, const_byte, size_s * sizeof(int));
 	retval = ft_compare_bytes(arr1, arr2, size_s * sizeof(int), const_byte);
+	if (!retval)
+		printf("problem in array of ints.\n");
 	free(arr1);
 	free(arr2);
 	return (retval);
@@ -92,6 +71,7 @@ int	main(void)
 {
 	int	test_i;
 
+	printf("ft_memset");
 	srand(time(0));
 	test_i = 0;
 	while (test_i < 100)
@@ -100,6 +80,6 @@ int	main(void)
 			return (1);
 		test_i++;
 	}
-	printf("ft_memset: PASS\n");
+	printf(": PASS\n");
 	return (0);
 }
