@@ -6,12 +6,17 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 19:28:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 17:15:43 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/27 08:55:53 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+
+char	*ft_rand_str(int size);
+int		ft_rand(int limit);
+char	ft_rand_print(void);
+char	*ft_rand_str_small(int size_str, int size_mem);
 
 int	ft_rand(int limit)
 {
@@ -30,6 +35,28 @@ char	ft_rand_print(void)
 			break ;
 	}
 	return (ret);
+}
+
+char	*ft_rand_str_small(int size_str, int size_mem)
+{
+	char	*str;
+	int		index;
+
+	if (size_str >= size_mem)
+		return (ft_rand_str(size_str));
+	index = 0;
+	str = malloc((size_mem) * sizeof(char));
+	while (index < size_str)
+	{
+		str[index] = ft_rand_print();
+		index++;
+	}
+	while (index < size_mem)
+	{
+		str[index] = '\0';
+		index++;
+	}
+	return (str);
 }
 
 char	*ft_rand_str(int size)

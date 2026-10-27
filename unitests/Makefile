@@ -1,4 +1,4 @@
-VALG	= 0
+VALG	= 1
 ASAN	= 0
 DEBUG	= -g -O0
 
@@ -18,12 +18,15 @@ else
 	endif
 endif
 
-RAND_UNITS	= 	strlen memset bzero memcpy memmove strlcpy
+RAND_UNITS	= 	strlen memset bzero memcpy memmove \
+			strlcpy strlcat
 
-MEMO_UNITS	= 	memset bzero memcpy memmove strlcpy
+MEMO_UNITS	= 	memset bzero memcpy memmove \
+			strlcpy strlcat
 
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
-		strlen memset bzero memmove strlcpy # ...
+		strlen memset bzero memmove \
+		strlcpy strlcat  # ...
 
 all: $(UNITS)
 

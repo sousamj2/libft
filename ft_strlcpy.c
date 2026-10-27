@@ -6,13 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 07:05:41 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/27 08:10:54 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/27 08:28:20 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
-#include <stdio.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
