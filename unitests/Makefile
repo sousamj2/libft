@@ -2,10 +2,10 @@ VALG	= 1
 ASAN	= 0
 DEBUG	= -g -O0
 
-CC	= cc
+CC	= cc -std=c89 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I../
-LIBS	+= -L.. -lft -lc
+LIBS	+= -L.. -lft -lc -lbsd
 PREXEC	= ulimit -v 131072; timeout 5s
 
 ifeq ($(VALG),1)

@@ -6,16 +6,16 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 07:14:26 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/27 08:10:12 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/27 13:08:00 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "libft.h"
 #include <strings.h>
 #include <time.h>
+#include <bsd/bsd.h>
 
 char	*ft_rand_str(int size);
 int		*ft_rand_array(int size);

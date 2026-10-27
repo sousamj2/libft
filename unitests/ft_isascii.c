@@ -6,9 +6,10 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:13:47 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/25 16:47:27 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/27 12:18:33 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#define _XOPEN_SOURCE 700
 #include <stdio.h>
 #include <ctype.h>
 

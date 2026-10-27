@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 08:33:18 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/27 09:00:52 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/27 13:09:08 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "libft.h"
 #include <strings.h>
 #include <time.h>
+#include <bsd/bsd.h>
 
 char	*ft_rand_str(int size);
 char	*ft_rand_str_small(int size_str, int size_mem);
