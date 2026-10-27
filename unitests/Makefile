@@ -18,12 +18,12 @@ else
 	endif
 endif
 
-RAND_UNITS	= 	strlen memset bzero memcpy memmove
+RAND_UNITS	= 	strlen memset bzero memcpy memmove strlcpy
 
-MEMO_UNITS	= 	memset bzero memcpy memmove
+MEMO_UNITS	= 	memset bzero memcpy memmove strlcpy
 
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
-		strlen memset bzero memmove # ...
+		strlen memset bzero memmove strlcpy # ...
 
 all: $(UNITS)
 
