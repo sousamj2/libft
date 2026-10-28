@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 19:28:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/27 08:55:53 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/28 22:34:50 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ char	ft_rand_print(void)
 	return (ret);
 }
 
+char	ft_rand_memval(void)
+{
+	return (ft_rand(256));
+}
+
 char	*ft_rand_str_small(int size_str, int size_mem)
 {
 	char	*str;
@@ -63,6 +68,23 @@ char	*ft_rand_str(int size)
 	while (index < size)
 	{
 		str[index] = ft_rand_print();
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
+}
+
+
+char	*ft_rand_mem(int size)
+{
+	char	*str;
+	int		index;
+
+	index = 0;
+	str = malloc((size + 1) * sizeof(char));
+	while (index < size)
+	{
+		str[index] = ft_rand_memval();
 		index++;
 	}
 	str[index] = '\0';
