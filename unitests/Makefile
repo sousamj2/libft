@@ -19,7 +19,8 @@ else
 endif
 
 RAND_UNITS	= 	strlen memset bzero memcpy memmove \
-			strlcpy strlcat strchr strrchr
+			strlcpy strlcat strchr strrchr \
+			strncmp
 
 MEMO_UNITS	= 	memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr
@@ -27,7 +28,7 @@ MEMO_UNITS	= 	memset bzero memcpy memmove \
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
 		strlen memset bzero memmove \
 		strlcpy strlcat toupper tolower \
-		strchr strrchr # ...
+		strchr strrchr strncmp # ...
 
 all: $(UNITS)
 
