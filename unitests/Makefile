@@ -1,4 +1,4 @@
-VALG	= 1
+VALG	= 0
 ASAN	= 0
 DEBUG	= -g -O0
 
@@ -26,7 +26,7 @@ MEMO_UNITS	= 	memset bzero memcpy memmove \
 
 UNITS	= 	isalpha isdigit isalnum isascii isprint \
 		strlen memset bzero memmove \
-		strlcpy strlcat  # ...
+		strlcpy strlcat toupper tolower  # ...
 
 all: $(UNITS)
 

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 08:19:12 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 14:11:31 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/28 14:52:49 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		index++;
 	}
 	if (size_dst + size_src <= size)
-		return(size_dst + size_src );
+		return (size_dst + size_src);
 	if (size <= size_dst)
-		return(size_dst+size);
-	/* while (size_dst + index < size) */
-	/* { */
-	/* 	dst[size_dst + index] = '\0'; */
-	/* 	index++; */
-	/* } */
-	return (size_dst + (size - index) -1);
+		return
+			(size_dst + size);
+	return (size_dst + (size - index) - 1);
 }
