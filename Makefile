@@ -20,6 +20,8 @@ OBJS	= $(addprefix objs/, $(SRCS:.c=.o))
 
 all: $(NAME)
 
+strlcat: all
+
 test:
 	@echo NAME=$(NAME)
 	@echo OBJS=$(OBJS)

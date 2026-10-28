@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:15:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 22:40:02 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/28 14:34:47 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ int	ft_compare_memory(void *truth, void *test, t_size_t size_s, char *src)
 	{
 		if (*ptr_tes != *ptr_tru)
 		{
-			printf("\n------------\n");
 			printf("  src: [%p] %s\n", src, src);
-			printf("test: [%p] %s\n", ptr_tes, ptr_tes);
-			printf("true: [%p] %s\n", ptr_tru, ptr_tru);
 			return (0);
 		}
 		index++;
