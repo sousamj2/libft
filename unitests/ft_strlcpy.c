@@ -32,7 +32,7 @@ int	ft_test_samesize(void)
 	int		retval;
 	size_t	ret[2];
 
-	size_s = ft_rand(100);
+	size_s = ft_rand(100) + 1;
 	src = ft_rand_str(size_s - 1);
 	dest[0] = malloc(size_s * sizeof(char));
 	dest[1] = malloc(size_s * sizeof(char));
@@ -58,8 +58,8 @@ int	ft_test_diffsize(void)
 	size_t	ret[2];
 
 	size_s = ft_rand(100);
-	src = ft_rand_str(size_s - 1);
-	size_s = ft_rand(100);
+	src = ft_rand_str(size_s);
+	size_s = ft_rand(100) + 1;
 	dest[0] = malloc(size_s * sizeof(char));
 	dest[1] = malloc(size_s * sizeof(char));
 	bzero(dest[0], size_s * sizeof(char));
@@ -85,7 +85,7 @@ int	main(void)
 	printf("ft_strlcpy: ");
 	srand(time(0));
 	test_i = 0;
-	while (test_i < 100)
+	while (test_i < 200)
 	{
 		if (!ft_test_samesize() || !ft_test_diffsize())
 			return (1);

@@ -2,7 +2,7 @@ VALG	= 1
 ASAN	= 0
 DEBUG	= -g -O0
 
-CC	= cc -std=c89 -D_DEFAULT_SOURCE
+CC	= clang -std=c89 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I../
 LIBS	+= -L.. -lft -lc -lbsd

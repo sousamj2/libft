@@ -42,20 +42,14 @@ char	*ft_rand_str_small(int size_str, int size_mem)
 	char	*str;
 	int		index;
 
-	if (size_str >= size_mem)
-		return (ft_rand_str(size_str));
 	index = 0;
-	str = malloc((size_mem) * sizeof(char));
+	str = malloc((size_mem + 1) * sizeof(char));
 	while (index < size_str)
 	{
 		str[index] = ft_rand_print();
 		index++;
 	}
-	while (index < size_mem)
-	{
-		str[index] = '\0';
-		index++;
-	}
+	str[index] = '\0';
 	return (str);
 }
 
