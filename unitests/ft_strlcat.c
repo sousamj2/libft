@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 08:33:18 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 14:34:23 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:53:51 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_rand_str(int size);
 char	*ft_rand_str_small(int size_str, int size_mem);
 int		*ft_rand_array(int size);
 int		ft_rand(int limit);
-int		ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val);
-int		ft_compare_memory(void *truth, void *test, t_size_t size_s, char *src);
+int		ft_compare_bytes(void *truth, void *test, size_t size_s, int val);
+int		ft_compare_memory(void *truth, void *test, size_t size_s, char *src);
 int		ft_test_samesize(void);
 
 int	ft_test_exactsize(void)

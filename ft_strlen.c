@@ -6,13 +6,13 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 17:00:02 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 17:09:27 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:50:19 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	len;
 

@@ -6,19 +6,19 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:01:56 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/26 22:33:19 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:51:30 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static unsigned char	*ft_overlap(unsigned char *dest,
-							const unsigned char *src, t_size_t n);
+							const unsigned char *src, size_t n);
 
 static unsigned char	*ft_overlap(unsigned char *dest,
-							const unsigned char *src, t_size_t n)
+							const unsigned char *src, size_t n)
 {
-	t_size_t	iter;
+	size_t	iter;
 
 	if ((long) dest - (long) src - (long) n < 0)
 	{
@@ -41,7 +41,7 @@ static unsigned char	*ft_overlap(unsigned char *dest,
 	return (dest);
 }
 
-void	*ft_memmove(void *dest, const void *src, t_size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*ptr_dest;
 	const unsigned char	*ptr_src;

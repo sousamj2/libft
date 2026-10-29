@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 19:28:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 18:42:17 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:37:04 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ void	*ft_rand_mem(int size)
 }
 
 char	ft_rand_elem(const char *list, int lsize)
+{
+	return (list[ft_rand(lsize)]);
+}
+
+size_t	ft_rand_elem_size(const size_t *list, int lsize)
 {
 	return (list[ft_rand(lsize)]);
 }

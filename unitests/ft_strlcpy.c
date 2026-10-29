@@ -6,22 +6,21 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 07:14:26 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/27 13:08:00 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:52:34 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "libft.h"
 #include <strings.h>
 #include <time.h>
 #include <bsd/bsd.h>
+#include "libft.h"
 
 char	*ft_rand_str(int size);
 int		*ft_rand_array(int size);
 int		ft_rand(int limit);
-int		ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val);
-int		ft_compare_memory(void *truth, void *test, t_size_t size_s);
+int		ft_compare_bytes(void *truth, void *test, size_t size_s, int val);
+int		ft_compare_memory(void *truth, void *test, size_t size_s);
 int		ft_test_samesize(void);
 
 int	ft_test_samesize(void)

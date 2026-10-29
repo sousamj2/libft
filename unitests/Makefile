@@ -22,7 +22,8 @@ endif
 
 RAND_UNITS	= 	strlen memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
-			strncmp memchr memcmp strnstr atoi
+			strncmp memchr memcmp strnstr atoi \
+			calloc
 
 MEMO_UNITS	= 	memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
@@ -32,7 +33,8 @@ UNITS	= 	isalpha isdigit isalnum isascii isprint \
 		strlen memset bzero memmove \
 		strlcpy strlcat toupper tolower \
 		strchr strrchr strncmp\
-		memchr memcmp strnstr atoi # ...
+		memchr memcmp strnstr atoi \
+		calloc # ...
 
 all: $(UNITS)
 
@@ -44,6 +46,7 @@ test:
 	@echo EXEC: $(EXEC)
 	@echo COMP: $(COMP)
 	@echo DEBUG: $(DEBUG)
+
 norm $(addprefix build_, $(RAND_UNITS)): AUX += ft_random.c
 
 norm $(addprefix build_, $(MEMO_UNITS)): AUX += ft_memory.c

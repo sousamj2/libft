@@ -6,16 +6,16 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:15:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 14:34:47 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:53:32 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-int	ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val)
+int	ft_compare_bytes(void *truth, void *test, size_t size_s, int val)
 {
-	t_size_t		index;
+	size_t		index;
 	unsigned char	*ptr_tru;
 	unsigned char	*ptr_tes;
 
@@ -37,9 +37,9 @@ int	ft_compare_bytes(void *truth, void *test, t_size_t size_s, int val)
 	return (1);
 }
 
-int	ft_compare_memory(void *truth, void *test, t_size_t size_s, char *src)
+int	ft_compare_memory(void *truth, void *test, size_t size_s, char *src)
 {
-	t_size_t		index;
+	size_t		index;
 	unsigned char	*ptr_tru;
 	unsigned char	*ptr_tes;
 
