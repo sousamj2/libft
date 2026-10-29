@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 08:22:01 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 09:12:18 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 11:58:25 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -65,12 +65,12 @@ int	ft_two_memories(void *s1, void *s2, size_t n)
 	return (ret1 == ret2);
 }
 
-int ft_random_mem(size_t n)
+int	ft_random_mem(size_t n)
 {
 	void	*mem0;
 	void	*mem1;
 	int		ret[2];
-	
+
 	mem0 = ft_rand_mem(n);
 	mem1 = ft_rand_mem(n);
 	ret[0] = memcmp(mem0, mem1, n);

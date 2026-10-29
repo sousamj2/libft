@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 22:26:55 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 07:46:07 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 10:32:10 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*ft_rand_mem(int size);
 int		ft_rand(int limit);
 char	ft_rand_memval(void);
 int		ft_compare_memory(void *truth, void *test, t_size_t size_s, char *src);
-
-/* void *ft_memchr(const void *s, int c, size_t n) */
 
 int	main(void)
 {
@@ -56,6 +54,6 @@ int	main(void)
 		test_i++;
 		free(str[0]);
 	}
-	printf("ft_strchr: PASS\n");
+	printf("ft_memchr: PASS\n");
 	return (0);
 }
