@@ -6,11 +6,12 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 19:28:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 22:34:50 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 07:47:43 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 char	*ft_rand_str(int size);
@@ -74,20 +75,18 @@ char	*ft_rand_str(int size)
 	return (str);
 }
 
-
-char	*ft_rand_mem(int size)
+void	*ft_rand_mem(int size)
 {
-	char	*str;
-	int		index;
+	unsigned char	*str;
+	int				index;
 
 	index = 0;
-	str = malloc((size + 1) * sizeof(char));
+	str = malloc(size);
 	while (index < size)
 	{
 		str[index] = ft_rand_memval();
 		index++;
 	}
-	str[index] = '\0';
 	return (str);
 }
 

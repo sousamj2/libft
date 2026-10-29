@@ -6,25 +6,25 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 22:22:44 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 22:29:44 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 07:59:12 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*ibyte;
 	size_t			index;
 
-	ibyte = (unsigned char *)s;
-	index = 0;	
+	ibyte = (unsigned char *) s;
+	index = 0;
 	while (index < n)
 	{
 		if (*ibyte == (unsigned char) c)
 			return (ibyte);
 		ibyte++;
-		index++;		
+		index++;
 	}
 	return (NULL);
 }

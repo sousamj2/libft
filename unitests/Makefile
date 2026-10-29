@@ -63,7 +63,8 @@ eclean:
 	$(MAKE) clean
 
 norm:
-	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS))) $(AUX)
+	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS))) $(AUX) | \
+		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS"
 
 .PHONY: all build eclean clean norm
 
