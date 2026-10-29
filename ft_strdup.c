@@ -6,13 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 20:40:35 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 22:04:06 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 22:10:59 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
 char	*ft_strdup(const char *s)
 {

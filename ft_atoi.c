@@ -6,12 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 12:07:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 18:42:37 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 22:09:06 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_remove_space(char *nptr)
 {

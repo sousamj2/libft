@@ -6,14 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:01:56 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:51:30 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 22:10:28 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static unsigned char	*ft_overlap(unsigned char *dest,
-							const unsigned char *src, size_t n);
 
 static unsigned char	*ft_overlap(unsigned char *dest,
 							const unsigned char *src, size_t n)

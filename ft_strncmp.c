@@ -6,9 +6,10 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 19:17:37 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 22:18:24 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 22:11:32 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

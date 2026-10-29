@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 21:01:50 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 22:04:53 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 22:14:56 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(void)
 		test_i++;
 		ft_free_mem(str, dup[0], dup[1]);
 	}
-	printf("ft_strlen: PASS\n");
+	printf("ft_strdup: PASS\n");
 	return (0);
 }
 
