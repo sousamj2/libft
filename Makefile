@@ -1,8 +1,9 @@
 CC	= clang # cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -I./
 
 NAME	= libft.a
-SRCS	= 	ft_isalpha.c	\
+
+SRCS1	= 	ft_isalpha.c	\
 		ft_isdigit.c	\
 		ft_isalnum.c	\
 		ft_isascii.c	\
@@ -25,18 +26,26 @@ SRCS	= 	ft_isalpha.c	\
 		ft_atoi.c	\
 		ft_calloc.c	\
 		ft_strdup.c
+OBJS_1	= $(addprefix objs1/, $(SRCS1:.c=.o))
+SRCS_1	= $(addprefix srcs1/, $(SRCS1))
+# 288abfd commit with everything correct.
 
-OBJS	= $(addprefix objs/, $(SRCS:.c=.o))
 
+SRCS2	= 	ft_substr
 
+OBJS_2	= $(addprefix objs2/, $(SRCS2:.c=.o))
+SRCS_2	= $(addprefix srcs2/, $(SRCS2))
+# 288abfd commit with everything correct.
+
+OBJS	= $(OBJS_1) $(OBJS_2) $(OBJS_3)
 all: $(NAME)
 
 strchr: all
 
 test:
 	@echo NAME=$(NAME)
-	@echo OBJS=$(OBJS)
-	@echo SRCS=$(SRCS)
+	@echo OBJS_1=$(OBJS_1)
+	@echo SRCS_1=$(SRCS_1)
 
 $(NAME): $(OBJS)
 	@# r for insert/replace object files.
@@ -44,8 +53,12 @@ $(NAME): $(OBJS)
 	@# s create the symbol index.
 	ar rcs $(NAME) $(OBJS)
 
-objs/%.o: %.c
-	@mkdir -p objs/
+objs1/%.o: srcs1/%.c
+	@mkdir -p objs1/
+	$(CC) $(CFLAGS) -c $^ -o $@
+
+objs2/%.o: srcs2/%.c
+	@mkdir -p objs2/
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 norm:
