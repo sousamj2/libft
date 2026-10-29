@@ -11,7 +11,7 @@ LIBS	+= -L.. -lft -lc -lbsd
 PREXEC	= ulimit -v 131072; timeout 5s
 
 ifeq ($(VALG),1)
-	EXEC	= valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 -s
+	EXEC	= valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 --track-origins=yes -s
 	PREXEC	= ulimit -v 262144; timeout 5s
 else
 	ifeq ($(ASAN),1)
@@ -23,7 +23,7 @@ endif
 RAND_UNITS	= 	strlen memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
 			strncmp memchr memcmp strnstr atoi \
-			calloc
+			calloc strdup
 
 MEMO_UNITS	= 	memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
@@ -34,7 +34,7 @@ UNITS	= 	isalpha isdigit isalnum isascii isprint \
 		strlcpy strlcat toupper tolower \
 		strchr strrchr strncmp\
 		memchr memcmp strnstr atoi \
-		calloc # ...
+		calloc strdup # ...
 
 all: $(UNITS)
 
