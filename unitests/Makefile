@@ -1,6 +1,8 @@
 VALG	= 1
 ASAN	= 0
 DEBUG	= -g -O0
+QUIET	= 0
+Q = $(if $(filter 1,$(QUIET)),@,)
 
 CC	= clang -std=c89 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
@@ -20,7 +22,7 @@ endif
 
 RAND_UNITS	= 	strlen memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
-			strncmp memchr memcmp strnstr
+			strncmp memchr memcmp strnstr atoi
 
 MEMO_UNITS	= 	memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
@@ -30,7 +32,7 @@ UNITS	= 	isalpha isdigit isalnum isascii isprint \
 		strlen memset bzero memmove \
 		strlcpy strlcat toupper tolower \
 		strchr strrchr strncmp\
-		memchr memcmp strnstr # ...
+		memchr memcmp strnstr atoi # ...
 
 all: $(UNITS)
 
@@ -47,11 +49,11 @@ norm $(addprefix build_, $(RAND_UNITS)): AUX += ft_random.c
 norm $(addprefix build_, $(MEMO_UNITS)): AUX += ft_memory.c
 
 build_%: ft_%.c
-	$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
+	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
 %: build_%
-	$(PREXEC) $(EXEC) ./run_$@
-	rm -f ./run_$@
+	$(Q)$(PREXEC) $(EXEC) ./run_$@
+	$(Q)rm -f ./run_$@
 
 build: $(addprefix build_, $(UNITS))
 
@@ -65,7 +67,8 @@ eclean:
 
 norm:
 	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS))) $(AUX) | \
-		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS"
+		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
+		grep -vE ": OK!"
 
 .PHONY: all build eclean clean norm
 

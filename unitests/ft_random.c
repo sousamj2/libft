@@ -6,12 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 19:28:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 07:47:43 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 18:42:17 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 char	*ft_rand_str(int size);
@@ -88,6 +87,49 @@ void	*ft_rand_mem(int size)
 		index++;
 	}
 	return (str);
+}
+
+char	ft_rand_elem(const char *list, int lsize)
+{
+	return (list[ft_rand(lsize)]);
+}
+
+char	*ft_rand_atoi(size_t nspaces, size_t ndigs)
+{
+	size_t		ispace;
+	size_t		idig;
+	size_t		iafter;
+	size_t		after_num;
+	char		*retval;
+	const char	spacechars[6] = {' ', '\f', '\n', '\r', '\t', '\v'};
+	const char	signchars[3] = {' ', '-', '+'};
+
+	idig = 0;
+	ispace = 0;
+	iafter = 0;
+	after_num = ft_rand(4);
+	retval = malloc((nspaces + ndigs + after_num + 2) * sizeof(char));
+	while (ispace < nspaces)
+	{
+		retval[ispace] = ft_rand_elem(spacechars, 6);
+		retval[ispace + 1] = '\0';
+		ispace++;
+	}
+	retval[nspaces] = ft_rand_elem(signchars, 3);
+	retval[nspaces + 1] = '\0';
+	while (idig < ndigs)
+	{
+		retval[nspaces + idig + 1] = '0' + ft_rand(10);
+		retval[nspaces + idig + 2] = '\0';
+		idig++;
+	}
+	while (iafter < after_num)
+	{
+		retval[nspaces + ndigs + iafter + 1] = ft_rand_print();
+		retval[nspaces + ndigs + iafter + 2] = '\0';
+		iafter++;
+	}
+	return (retval);
 }
 
 int	*ft_rand_array(int size)

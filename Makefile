@@ -21,7 +21,8 @@ SRCS	= 	ft_isalpha.c	\
 		ft_strncmp.c	\
 		ft_memchr.c	\
 		ft_memcmp.c	\
-		ft_strnstr.c
+		ft_strnstr.c	\
+		ft_atoi.c
 
 OBJS	= $(addprefix objs/, $(SRCS:.c=.o))
 
@@ -46,7 +47,7 @@ objs/%.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 norm:
-	norminette $(SRCS) libft.h
+	norminette $(SRCS) libft.h | grep -v ": OK!"
 
 clean:
 	rm -fv $(OBJS)
