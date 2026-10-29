@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:36:15 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:48:35 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 20:19:13 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef struct s_list
 {
-void			*content;
-struct s_list	*next;   
+	void			*content;
+	struct s_list	*next;
 }				t_list;
 
 int		ft_isalpha(int c);

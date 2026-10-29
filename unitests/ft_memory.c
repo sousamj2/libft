@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:15:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:53:32 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 20:04:17 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_compare_bytes(void *truth, void *test, size_t size_s, int val)
 {
-	size_t		index;
+	size_t			index;
 	unsigned char	*ptr_tru;
 	unsigned char	*ptr_tes;
 
@@ -39,7 +39,7 @@ int	ft_compare_bytes(void *truth, void *test, size_t size_s, int val)
 
 int	ft_compare_memory(void *truth, void *test, size_t size_s, char *src)
 {
-	size_t		index;
+	size_t			index;
 	unsigned char	*ptr_tru;
 	unsigned char	*ptr_tes;
 

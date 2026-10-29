@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 15:23:51 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:50:48 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 20:04:51 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t		index;
+	size_t			index;
 	unsigned char	*ptr;
 
 	index = 0;

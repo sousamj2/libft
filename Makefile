@@ -48,7 +48,8 @@ objs/%.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 norm:
-	norminette $(SRCS) libft.h | grep -v ": OK!"
+	norminette $(SRCS) libft.h | grep -v ": OK!" ; exit "$${PIPESTATUS[0]}"
+	@echo Norminette: all OK!
 
 clean:
 	rm -fv $(OBJS)
