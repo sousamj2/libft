@@ -31,16 +31,15 @@ SRCS_1	= $(addprefix srcs1/, $(SRCS1))
 # 288abfd commit with everything correct.
 
 
-SRCS2	= 	ft_substr
+SRCS2	= 	ft_substr.c
 
 OBJS_2	= $(addprefix objs2/, $(SRCS2:.c=.o))
 SRCS_2	= $(addprefix srcs2/, $(SRCS2))
 # 288abfd commit with everything correct.
 
 OBJS	= $(OBJS_1) $(OBJS_2) $(OBJS_3)
-all: $(NAME)
 
-strchr: all
+all: $(NAME)
 
 test:
 	@echo NAME=$(NAME)
@@ -48,9 +47,9 @@ test:
 	@echo SRCS_1=$(SRCS_1)
 
 $(NAME): $(OBJS)
-	@# r for insert/replace object files.
-	@# c for creating the file if it does not exist.
-	@# s create the symbol index.
+	@# r for insert/[r]eplace object files.
+	@# c for [c]reating the file if it does not exist.
+	@# s create the [s]ymbol index.
 	ar rcs $(NAME) $(OBJS)
 
 objs1/%.o: srcs1/%.c

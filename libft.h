@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:36:15 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 22:12:48 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/29 22:49:50 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t n, size_t size);
 char	*ft_strdup(const char *s);
 
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif
