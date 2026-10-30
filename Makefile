@@ -70,3 +70,11 @@ fclean:
 	rm -fv $(NAME)
 
 re: clean fclean all
+
+eclean:
+	rm -fv compile_commands.json
+	rm -fv */compile_commands.json
+	bear -- make
+	cp -v compile_commands.json srcs1/
+	cp -v compile_commands.json srcs2/
+	$(MAKE) clean
