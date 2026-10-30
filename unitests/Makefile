@@ -6,7 +6,7 @@ Q = $(if $(filter 1,$(QUIET)),@,)
 
 CC	= clang -std=c89 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	+= -I../
+CFLAGS	+= -I..
 LIBS	+= -L.. -lft -lc -lbsd
 PREXEC	= ulimit -v 131072; timeout 5s
 
@@ -20,48 +20,48 @@ else
 	endif
 endif
 
-RAND_UNITS	= 	strlen memset bzero memcpy memmove \
+RAND_UNITS_01	= 	strlen memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
 			strncmp memchr memcmp strnstr atoi \
 			calloc strdup
 
-MEMO_UNITS	= 	memset bzero memcpy memmove \
+MEMO_UNITS_01	= 	memset bzero memcpy memmove \
 			strlcpy strlcat strchr strrchr \
 			memchr memcmp
 
-UNITS	= 	isalpha isdigit isalnum isascii isprint \
-		strlen memset bzero memmove \
-		strlcpy strlcat toupper tolower \
-		strchr strrchr strncmp\
-		memchr memcmp strnstr atoi \
-		calloc strdup # ...
+UNITS_01	= 	isalpha isdigit isalnum isascii isprint \
+			strlen memset bzero memmove \
+			strlcpy strlcat toupper tolower \
+			strchr strrchr strncmp\
+			memchr memcmp strnstr atoi \
+			calloc strdup
 
-all: $(UNITS)
+all: $(UNITS_01)
 
 test:
-	@echo UNITS: $(UNITS)
-	@echo RAND_UNITS: $(RAND_UNITS)
+	@echo UNITS_01: $(UNITS_01)
+	@echo RAND_UNITS_01: $(RAND_UNITS_01)
 	@echo VALG: $(VALG)
 	@echo ASAN: $(ASAN)
 	@echo EXEC: $(EXEC)
 	@echo COMP: $(COMP)
 	@echo DEBUG: $(DEBUG)
 
-norm $(addprefix build_, $(RAND_UNITS)): AUX += ft_random.c
+norm $(addprefix build1_, $(RAND_UNITS_01)): AUX += ft_random.c
 
-norm $(addprefix build_, $(MEMO_UNITS)): AUX += ft_memory.c
+norm $(addprefix build1_, $(MEMO_UNITS_01)): AUX += ft_memory.c
 
-build_%: ft_%.c
+build1_%: srcs1/ft_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
-%: build_%
+%: build1_%
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
 	$(Q)rm -f ./run_$@
 
-build: $(addprefix build_, $(UNITS))
+build: $(addprefix build1_, $(UNITS_01))
 
 clean:
-	rm -f $(addprefix run_, $(UNITS))
+	rm -f $(addprefix run_, $(UNITS_01))
 
 eclean:
 	rm -fv compile_commands.json
@@ -69,7 +69,7 @@ eclean:
 	$(MAKE) clean
 
 norm:
-	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS))) $(AUX) | \
+	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS_01))) $(AUX) | \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 
