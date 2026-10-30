@@ -36,42 +36,83 @@ UNITS_01	= 	isalpha isdigit isalnum isascii isprint \
 			memchr memcmp strnstr atoi \
 			calloc strdup
 
-all: $(UNITS_01)
+
+RAND_UNITS_02	= 	strjoin strtrim substr
+
+MEMO_UNITS_02	= 	
+
+UNITS_02	= 	strjoin strtrim substr
+
+all: $(UNITS_01) $(UNITS_02)
 
 test:
-	@echo UNITS_01: $(UNITS_01)
-	@echo RAND_UNITS_01: $(RAND_UNITS_01)
+	@echo --------------------
+	@echo Configuration
+	@echo --------------------
 	@echo VALG: $(VALG)
 	@echo ASAN: $(ASAN)
 	@echo EXEC: $(EXEC)
 	@echo COMP: $(COMP)
+	@echo QUIET: $(QUIET)
 	@echo DEBUG: $(DEBUG)
+	@echo --------------------
+	@echo List of jobs
+	@echo --------------------
+	@echo UNITS_01: $(UNITS_01)
+	@echo UNITS_02: $(UNITS_02)
+	@echo --------------------
+	@echo Using random.c
+	@echo --------------------
+	@echo RAND_UNITS_01: $(RAND_UNITS_01)
+	@echo RAND_UNITS_02: $(RAND_UNITS_02)
+	@echo --------------------
 
-norm $(addprefix build1_, $(RAND_UNITS_01)): AUX += ft_random.c
+norm $(addprefix build1_, $(RAND_UNITS_01)) \
+norm $(addprefix build2_, $(RAND_UNITS_02)) : AUX += ft_random.c
 
-norm $(addprefix build1_, $(MEMO_UNITS_01)): AUX += ft_memory.c
+norm $(addprefix build1_, $(MEMO_UNITS_01)) \
+norm $(addprefix build2_, $(MEMO_UNITS_02)) : AUX += ft_memory.c
 
 build1_%: srcs1/ft_%.c
+	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
+
+build2_%: srcs2/ft_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
 %: build1_%
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
 	$(Q)rm -f ./run_$@
 
-build: $(addprefix build1_, $(UNITS_01))
+%: build2_%
+	$(Q)$(PREXEC) $(EXEC) ./run_$@
+	$(Q)rm -f ./run_$@
+
+build: $(addprefix build1_, $(UNITS_01)) $(addprefix build2_, $(UNITS_02))
 
 clean:
 	rm -f $(addprefix run_, $(UNITS_01))
+	rm -f $(addprefix run_, $(UNITS_02))
 
 eclean:
 	rm -fv compile_commands.json
 	bear -- make -B build
+	cp -v compile_commands.json srcs1/
+	cp -v compile_commands.json srcs2/
 	$(MAKE) clean
 
-norm:
-	norminette $(addsuffix .c, $(addprefix ft_, $(UNITS_01))) $(AUX) | \
+norm1:
+	norminette $(AUX) \
+		$(addsuffix .c, $(addprefix ft_, $(UNITS_01)))  \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
+
+norm2:
+	norminette $(AUX) \
+		$(addsuffix .c, $(addprefix ft_, $(UNITS_02)))  \
+		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
+		grep -vE ": OK!"
+
+norm: norm1 norm2
 
 .PHONY: all build eclean clean norm
 

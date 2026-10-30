@@ -14,4 +14,4 @@ createFiles.sh
 
 # Others (added individually)
 compile_commands.json
-/unitests/.cache/
+.cache/

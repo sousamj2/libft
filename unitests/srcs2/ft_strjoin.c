@@ -6,6 +6,17 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 11:21:59 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/30 11:30:51 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/30 11:57:35 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+#include "libft.h"
+
+int main(void)
+{
+    printf("Main with no args.\n");
+    
+
+    return (0);
+}
