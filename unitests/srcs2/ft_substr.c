@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 11:21:32 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/30 14:02:52 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/30 17:47:55 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ int	main(int argc, char *argv[])
 	size_t			len;
 	char			*s;
 	char			*result;
-	
-    if (argc < 4)
+
+	start = 0;
+	len = 13;
+	s = "H]sBZfeiuberngoiue";
+	if (argc == 4)
     {
-		printf("Not enough args to execute %s.\n",argv[0]);
-		return (-1);
-    }
-	start = ft_atoi(argv[1]);
-	len = ft_atoi(argv[2]);
-	s = argv[3];
+		start = ft_atoi(argv[1]);
+		len = ft_atoi(argv[2]);
+		s = argv[3];
+	}
 	result = ft_substr(s, start, len);
-	printf("Result: [%s]\n", result);
-	free(result);
+	printf("%s\n", result);
+	if (result != NULL)
+		free(result);
 	return (0);
 }
