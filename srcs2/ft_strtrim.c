@@ -6,69 +6,91 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 07:10:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 11:51:52 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 13:04:27 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <strings.h>
 
-static size_t	ft_count_set_size(char const *s1, char const *set)
+static size_t	ft_count_mem_size(char const *s1, char const *set)
 {
-	char	*start;
-	size_t	count;
-	int		skip;
+	const char	*it_set;
+	size_t		count;
+	int			skip;
 
-	start = (char *)set;
-	count = 0;
+	count = ft_strlen(s1);
 	while (*s1 != '\0')
 	{
-		set = start;
+		it_set = set;
 		skip = 0;
-		while (*set != '\0')
+		while (*it_set != '\0')
 		{
-			if (*s1 == *set)
+			if (*s1 == *it_set)
 			{
 				skip = 1;
 				break ;
 			}
-			set++;
+			it_set++;
 		}
-		if (!skip)
-			count++;
+		if (skip)
+			count--;
 		s1++;
 	}
-	return (count + 1);
+	return (count);
+}
+
+static char	*ft_prepare_mem(char const *s1, char const *set, size_t *size_alloc)
+{
+	char	*retval;
+
+	if (!s1 || !set)
+		return (NULL);
+	*size_alloc = ft_count_mem_size(s1, set);
+	retval = malloc((1 + *size_alloc) * sizeof(char));
+	if (!retval)
+		return (NULL);
+	bzero(retval, *size_alloc + 1);
+	return (retval);
+}
+
+static char	*ft_prepare_retval(char const *s1, char const *set, char *retval)
+{
+	const char	*it_set;
+	int			skip;
+
+	while (*s1 != '\0')
+	{
+		it_set = set;
+		skip = 0;
+		while (*it_set != '\0')
+		{
+			if (*s1 == *it_set)
+			{
+				skip = 1;
+				break ;
+			}
+			it_set++;
+		}
+		if (!skip)
+		{
+			*retval = *s1;
+			retval++;
+		}
+		s1++;
+	}
+	return (retval);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*retval;
-	char	*start;
-	int		skip;
+	size_t	size_alloc;
 
-	if (!s1 || !set)
-		return (NULL);
-	retval = malloc(ft_count_set_size(s1, set) * sizeof(char));
+	retval = ft_prepare_mem(s1, set, &size_alloc);
 	if (!retval)
 		return (NULL);
-	start = (char *) set;
-	while (*s1 != '\0')
-	{
-		set = start;
-		skip = 0;
-		while (*set != '\0')
-		{
-			if (*s1 == *set)
-			{
-				skip = 1;
-				break ;
-			}
-			set++;
-		}
-		if (!skip)
-			*retval = *s1;
-		s1++;
-		retval++;
-	}
-	return (retval);
+	retval = ft_prepare_retval(s1, set, retval);
+	return (retval - size_alloc);
 }
