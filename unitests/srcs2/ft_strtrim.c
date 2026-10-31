@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 12:18:05 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 15:29:46 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 17:30:31 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	int debug;
 
 	s1 = "a";
-	set = "a";
+	set = "aa";
 	exp = "";
 	debug = 1;
     if (argc == 3)

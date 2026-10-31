@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 22:49:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 15:23:56 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 17:37:26 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static size_t	ft_size_alloc(char const *s, unsigned int start, size_t len)
 	int	size_str;
 
 	size_str = ft_strlen(s);
-	if (size_str - (int) start < 0)
+	if (size_str <= (int) start)
 		return (0);
 	else if (size_str - (int) start < (int) len)
 		return (size_str - (int) start);
@@ -35,10 +35,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	size_alloc = ft_size_alloc(s, start, len);
-	printf("Size_alloc = [%lu]\n", size_alloc);
-	printf("S [%s] start [%ul] len[%lu]", s, start, len);
 	retval = malloc(size_alloc + 1);
-	if (!retval)
+	if (retval == NULL)
 		return (NULL);
 	ft_bzero(retval, size_alloc + 1);
 	if (!size_alloc)
