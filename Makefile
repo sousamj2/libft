@@ -87,7 +87,7 @@ eclean:
 unitests:
 	$(MAKE) -C unitests/ VALG=0 QUIET=1
 
-%:
+%: all
 	$(MAKE) -C unitests/ $@
 
 .PHONY: unitests all clean fclean eclean norm

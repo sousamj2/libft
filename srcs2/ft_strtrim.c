@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 07:10:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/30 07:43:21 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 11:51:52 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static size_t	ft_count_set_size(char const *s1, char const *set)
 	int		skip;
 
 	start = (char *)set;
-	count = 0;	
+	count = 0;
 	while (*s1 != '\0')
 	{
 		set = start;
@@ -29,7 +29,7 @@ static size_t	ft_count_set_size(char const *s1, char const *set)
 			if (*s1 == *set)
 			{
 				skip = 1;
-				break;
+				break ;
 			}
 			set++;
 		}
@@ -40,7 +40,7 @@ static size_t	ft_count_set_size(char const *s1, char const *set)
 	return (count + 1);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*retval;
 	char	*start;
@@ -61,7 +61,7 @@ char *ft_strtrim(char const *s1, char const *set)
 			if (*s1 == *set)
 			{
 				skip = 1;
-				break;
+				break ;
 			}
 			set++;
 		}
