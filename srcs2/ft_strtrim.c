@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 07:10:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 13:04:27 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 15:26:27 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,83 +14,85 @@
 #include <stdio.h>
 #include <strings.h>
 
-static size_t	ft_count_mem_size(char const *s1, char const *set)
+static unsigned int ft_find_start(char const *s1, char const *set)
 {
-	const char	*it_set;
-	size_t		count;
-	int			skip;
+	unsigned int	retval;
+	const char		*it_set;
+	int				stop;
 
-	count = ft_strlen(s1);
+	retval = 0;
 	while (*s1 != '\0')
 	{
 		it_set = set;
-		skip = 0;
+		stop = 1;
 		while (*it_set != '\0')
 		{
 			if (*s1 == *it_set)
 			{
-				skip = 1;
+				stop = 0;
+				retval++;
 				break ;
 			}
 			it_set++;
 		}
-		if (skip)
-			count--;
+		if (stop)
+		{
+			/* printf("Start: [%d]\n", retval); */
+			return (retval);
+		}
 		s1++;
 	}
-	return (count);
-}
-
-static char	*ft_prepare_mem(char const *s1, char const *set, size_t *size_alloc)
-{
-	char	*retval;
-
-	if (!s1 || !set)
-		return (NULL);
-	*size_alloc = ft_count_mem_size(s1, set);
-	retval = malloc((1 + *size_alloc) * sizeof(char));
-	if (!retval)
-		return (NULL);
-	bzero(retval, *size_alloc + 1);
+	/* printf("Start: [%d]\n", retval); */
 	return (retval);
 }
 
-static char	*ft_prepare_retval(char const *s1, char const *set, char *retval)
-{
-	const char	*it_set;
-	int			skip;
 
+static size_t	ft_find_stop(char const *s1, char const *set)
+{
+	size_t		retval;
+	const char	*it_set;
+	int			stop;
+
+	retval = 0;
 	while (*s1 != '\0')
 	{
 		it_set = set;
-		skip = 0;
+		stop = 1;
 		while (*it_set != '\0')
 		{
-			if (*s1 == *it_set)
+			if (*(s1 + ft_strlen(s1) - 1 - retval) == *it_set)
 			{
-				skip = 1;
+				stop = 0;
+				retval++;
 				break ;
 			}
 			it_set++;
 		}
-		if (!skip)
+		if (stop)
 		{
-			*retval = *s1;
-			retval++;
+			/* printf("Stop: [%lu]\n", retval); */
+			return (retval);
 		}
 		s1++;
 	}
+	/* printf("Stop: [%lu]\n", retval); */
 	return (retval);
 }
+
+
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*retval;
-	size_t	size_alloc;
+	unsigned int	start;
+	size_t			stop;
+	size_t			size;
 
-	retval = ft_prepare_mem(s1, set, &size_alloc);
-	if (!retval)
+	if (!s1 || !set)
 		return (NULL);
-	retval = ft_prepare_retval(s1, set, retval);
-	return (retval - size_alloc);
+	size = ft_strlen(s1);
+	start = ft_find_start(s1, set);
+	stop = ft_find_stop(s1, set);
+	printf("start [%u] stop [%lu] size [%lu]\n", start, stop, size);
+	return ( ft_substr(s1, start, size - start - stop));
 }
+

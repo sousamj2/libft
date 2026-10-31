@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 22:49:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 11:44:42 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 15:23:56 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	index;
 	size_t			size_alloc;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
 	size_alloc = ft_size_alloc(s, start, len);
+	printf("Size_alloc = [%lu]\n", size_alloc);
+	printf("S [%s] start [%ul] len[%lu]", s, start, len);
 	retval = malloc(size_alloc + 1);
 	if (!retval)
 		return (NULL);
