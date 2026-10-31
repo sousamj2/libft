@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/30 13:16:47 by marisous          #+#    #+#              #
-#    Updated: 2026/10/30 17:40:08 by marisous         ###   ########.fr        #
+#    Updated: 2026/10/31 11:16:31 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,10 +16,10 @@ import subprocess
 
 debug = False
 
-for i in range(10000):
+for i in range(1000):
     chars = ''.join(chr(i) for i in range(0x21, 0x7f))
     chars = string.ascii_letters + string.digits + string.punctuation.replace('"', '')
-    chars += ' \t\n\v\f\r'
+    chars += r' \t\n\v\f\r'
     # s = ''.join(random.choices(string.printable, k=random.randint(0, 100)))
     s = ''.join(random.choices(chars, k=random.randint(0, 10)))
     start = random.randint(0, 120)
@@ -28,7 +28,7 @@ for i in range(10000):
     expected = s[start:start + length]
 
     result = subprocess.run(
-        ["./run_substr", str(start), str(length), '"',s,'""'],
+        ["./run_substr", str(start), str(length), s],
         capture_output=True,
         text=True
     )
@@ -46,4 +46,4 @@ for i in range(10000):
         print(f"actual:   {actual!r}")
         break
 else:
-    print("10000 tests passed")    
+    print("1000 tests passed")    

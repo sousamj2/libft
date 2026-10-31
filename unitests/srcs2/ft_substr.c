@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 11:21:32 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/30 17:47:55 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 11:42:18 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(int argc, char *argv[])
 	char			*result;
 
 	start = 0;
-	len = 13;
-	s = "H]sBZfeiuberngoiue";
+	len = 54;
+	s = "a\0";
 	if (argc == 4)
     {
 		start = ft_atoi(argv[1]);
@@ -32,6 +32,7 @@ int	main(int argc, char *argv[])
 	result = ft_substr(s, start, len);
 	printf("%s\n", result);
 	if (result != NULL)
+		
 		free(result);
 	return (0);
 }

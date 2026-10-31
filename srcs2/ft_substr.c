@@ -6,17 +6,17 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 22:49:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/30 17:46:54 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 11:44:42 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static size_t ft_size_alloc(char const *s, unsigned int start, size_t len)
+static size_t	ft_size_alloc(char const *s, unsigned int start, size_t len)
 {
-	int size_str;
-	
+	int	size_str;
+
 	size_str = ft_strlen(s);
 	if (size_str - (int) start < 0)
 		return (0);
@@ -24,10 +24,9 @@ static size_t ft_size_alloc(char const *s, unsigned int start, size_t len)
 		return (size_str - (int) start);
 	else
 		return (len);
-	
 }
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*retval;
 	unsigned int	index;
@@ -40,16 +39,17 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	if (!retval)
 		return (NULL);
 	ft_bzero(retval, size_alloc + 1);
-	printf("Size alloc  (- 1) = %lu\n", size_alloc);
 	if (!size_alloc)
 		return (retval);
 	index = 0;
-	while (index < start)
-		index++;
-	while (index < start + len)
+	s += start;
+	while (index < size_alloc)
 	{
-		retval[index - start] = s[index];
+		*retval = *s;
+		s++;
+		*(retval + 1) = '\0';
+		retval++;
 		index++;
 	}
-	return (retval);
-}	
+	return (retval - index);
+}

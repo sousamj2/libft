@@ -3,6 +3,10 @@ CFLAGS	= -Wall -Wextra -Werror -I./
 
 NAME	= libft.a
 
+SRC_FOLDER_1	= srcs1
+SRC_FOLDER_2	= srcs2
+OBJ_FOLDER	= objs
+
 SRCS1	= 	ft_isalpha.c	\
 		ft_isdigit.c	\
 		ft_isalnum.c	\
@@ -26,25 +30,24 @@ SRCS1	= 	ft_isalpha.c	\
 		ft_atoi.c	\
 		ft_calloc.c	\
 		ft_strdup.c
-OBJS_1	= $(addprefix objs1/, $(SRCS1:.c=.o))
-SRCS_1	= $(addprefix srcs1/, $(SRCS1))
+
+
+SRCS2	= 	ft_substr.c	\
+		ft_strjoin.c	\
+		ft_strtrim.c
+
+OBJS	= $(addprefix $(OBJ_FOLDER)/, $(SRCS1:.c=.o) $(SRCS2:.c=.o))
+
+SRCS	=	$(addprefix $(SRC_FOLDER_1)/, $(SRCS1))	\
+		$(addprefix $(SRC_FOLDER_2)/, $(SRCS2))
 # 288abfd commit with everything correct.
-
-
-SRCS2	= 	ft_substr.c
-
-OBJS_2	= $(addprefix objs2/, $(SRCS2:.c=.o))
-SRCS_2	= $(addprefix srcs2/, $(SRCS2))
-# 288abfd commit with everything correct.
-
-OBJS	= $(OBJS_1) $(OBJS_2) $(OBJS_3)
 
 all: $(NAME)
 
 test:
 	@echo NAME=$(NAME)
-	@echo OBJS_1=$(OBJS_1)
-	@echo SRCS_1=$(SRCS_1)
+	@echo OBJS=$(OBJS)
+	@echo SRCS=$(SRCS)
 
 $(NAME): $(OBJS)
 	@# r for insert/[r]eplace object files.
@@ -52,24 +55,26 @@ $(NAME): $(OBJS)
 	@# s create the [s]ymbol index.
 	ar rcs $(NAME) $(OBJS)
 
-objs1/%.o: srcs1/%.c
-	@mkdir -p objs1/
+
+objs/%.o: srcs1/%.c 
+	@mkdir -p objs/
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-objs2/%.o: srcs2/%.c
-	@mkdir -p objs2/
+objs/%.o: srcs2/%.c
+	@mkdir -p objs/
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 norm:
 	norminette $(SRCS) libft.h | grep -v ": OK!" ; exit "$${PIPESTATUS[0]}"
 	@echo Norminette: all OK!
 
-clean:
-	rm -fv $(OBJS)
-fclean:
+clean: 
+	rm -rfv $(OBJ_FOLDER)
+
+fclean: clean
 	rm -fv $(NAME)
 
-re: clean fclean all
+re: fclean all
 
 eclean:
 	rm -fv compile_commands.json
@@ -78,3 +83,11 @@ eclean:
 	cp -v compile_commands.json srcs1/
 	cp -v compile_commands.json srcs2/
 	$(MAKE) clean
+
+unitests:
+	$(MAKE) -C unitests/ VALG=0 QUIET=1
+
+%:
+	$(MAKE) -C unitests/ $@
+
+.PHONY: unitests all clean fclean eclean norm

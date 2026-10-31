@@ -90,7 +90,7 @@ build2_%: srcs2/ft_%.c
 build: $(addprefix build1_, $(UNITS_01)) $(addprefix build2_, $(UNITS_02))
 
 test_%: build2_%
-	python ~/Projects42/libft/unitests/srcs2/ft_$*.py
+	python ~/work/Projects42/libft/unitests/srcs2/ft_$*.py
 
 clean:
 	rm -f $(addprefix run_, $(UNITS_01))
