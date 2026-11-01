@@ -41,7 +41,7 @@ RAND_UNITS_02	=
 
 MEMO_UNITS_02	= 	
 
-UNITS_02	= 	strjoin strtrim substr split
+UNITS_02	= 	strjoin strtrim substr split itoa
 
 all: $(UNITS_01) $(UNITS_02)
 
