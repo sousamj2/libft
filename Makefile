@@ -5,6 +5,7 @@ NAME	= libft.a
 
 SRC_FOLDER_1	= srcs1
 SRC_FOLDER_2	= srcs2
+SRC_FOLDER_3	= srcs3
 OBJ_FOLDER	= objs
 
 SRCS1	= 	ft_isalpha.c	\
@@ -44,10 +45,13 @@ SRCS2	= 	ft_substr.c	\
 		ft_putnbr_fd.c	\
 		ft_putendl_fd.c
 
-OBJS	= $(addprefix $(OBJ_FOLDER)/, $(SRCS1:.c=.o) $(SRCS2:.c=.o))
+SRCS3	= 	
+
+OBJS	= $(addprefix $(OBJ_FOLDER)/, $(SRCS1:.c=.o) $(SRCS2:.c=.o) $(SRCS3:.c=.o))
 
 SRCS	=	$(addprefix $(SRC_FOLDER_1)/, $(SRCS1))	\
-		$(addprefix $(SRC_FOLDER_2)/, $(SRCS2))
+		$(addprefix $(SRC_FOLDER_2)/, $(SRCS2)) \
+		$(addprefix $(SRC_FOLDER_3)/, $(SRCS3))
 # 288abfd commit with everything correct.
 
 all: $(NAME)
@@ -72,6 +76,9 @@ objs/%.o: srcs2/%.c
 	@mkdir -p objs/
 	$(CC) $(CFLAGS) -c $^ -o $@
 
+objs/%.o: srcs3/%.c
+	@mkdir -p objs/
+	$(CC) $(CFLAGS) -c $^ -o $@
 norm:
 	norminette $(SRCS) libft.h | grep -v ": OK!" ; exit "$${PIPESTATUS[0]}"
 	@echo Norminette: all OK!
@@ -90,6 +97,7 @@ eclean:
 	bear -- make
 	cp -v compile_commands.json srcs1/
 	cp -v compile_commands.json srcs2/
+	cp -v compile_commands.json srcs3/
 	$(MAKE) clean
 
 unitests:

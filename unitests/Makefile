@@ -44,7 +44,15 @@ MEMO_UNITS_02	=
 UNITS_02	= 	strjoin strtrim substr split itoa strmapi striteri \
 			putchar_fd putstr_fd putendl_fd putnbr_fd 
 
-all: $(UNITS_01) $(UNITS_02)
+
+RAND_UNITS_03	= 	
+
+MEMO_UNITS_03	= 	
+
+UNITS_03	= 	
+
+
+all: $(UNITS_01) $(UNITS_02) $(UNITS_03)
 
 test:
 	@echo --------------------
@@ -61,23 +69,30 @@ test:
 	@echo --------------------
 	@echo UNITS_01: $(UNITS_01)
 	@echo UNITS_02: $(UNITS_02)
+	@echo UNITS_03: $(UNITS_03)
 	@echo --------------------
 	@echo Using random.c
 	@echo --------------------
 	@echo RAND_UNITS_01: $(RAND_UNITS_01)
 	@echo RAND_UNITS_02: $(RAND_UNITS_02)
+	@echo RAND_UNITS_03: $(RAND_UNITS_03)
 	@echo --------------------
 
 norm $(addprefix build1_, $(RAND_UNITS_01)) \
-norm $(addprefix build2_, $(RAND_UNITS_02)) : AUX += ft_random.c
+norm $(addprefix build2_, $(RAND_UNITS_02)) \
+norm $(addprefix build3_, $(RAND_UNITS_03)) : AUX += ft_random.c
 
 norm $(addprefix build1_, $(MEMO_UNITS_01)) \
-norm $(addprefix build2_, $(MEMO_UNITS_02)) : AUX += ft_memory.c
+norm $(addprefix build2_, $(MEMO_UNITS_02)) \
+norm $(addprefix build3_, $(MEMO_UNITS_03)) : AUX += ft_memory.c
 
 build1_%: srcs1/ft_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
 build2_%: srcs2/ft_%.c
+	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
+
+build3_%: srcs3/ft_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
 %: build1_%
@@ -88,7 +103,13 @@ build2_%: srcs2/ft_%.c
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
 	$(Q)rm -f ./run_$@
 
-build: $(addprefix build1_, $(UNITS_01)) $(addprefix build2_, $(UNITS_02))
+%: build3_%
+	$(Q)$(PREXEC) $(EXEC) ./run_$@
+	$(Q)rm -f ./run_$@
+
+build:	$(addprefix build1_, $(UNITS_01)) \
+	$(addprefix build2_, $(UNITS_02)) \
+	$(addprefix build3_, $(UNITS_03))
 
 test_%: build2_%
 	python ~/work/Projects42/libft/unitests/srcs2/ft_$*.py
@@ -96,12 +117,14 @@ test_%: build2_%
 clean:
 	rm -f $(addprefix run_, $(UNITS_01))
 	rm -f $(addprefix run_, $(UNITS_02))
+	rm -f $(addprefix run_, $(UNITS_03))
 
 eclean:
 	rm -fv compile_commands.json
 	bear -- make -B build
 	cp -v compile_commands.json srcs1/
 	cp -v compile_commands.json srcs2/
+	cp -v compile_commands.json srcs3/
 	$(MAKE) clean
 
 norm1:
@@ -115,7 +138,12 @@ norm2:
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 
-norm: norm1 norm2
+norm3:
+	norminette $(addsuffix .c, $(addprefix srcs3/ft_, $(UNITS_02)))  | \
+		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
+		grep -vE ": OK!"
+
+norm: norm1 norm2 norm3
 
 .PHONY: all build eclean clean norm
 
