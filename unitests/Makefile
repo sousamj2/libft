@@ -37,11 +37,12 @@ UNITS_01	= 	isalpha isdigit isalnum isascii isprint \
 			calloc strdup
 
 
-RAND_UNITS_02	= 	
+RAND_UNITS_02	= 	putchar_fd
 
 MEMO_UNITS_02	= 	
 
-UNITS_02	= 	strjoin strtrim substr split itoa strmapi striteri
+UNITS_02	= 	strjoin strtrim substr split itoa strmapi striteri \
+			putchar_fd 
 
 all: $(UNITS_01) $(UNITS_02)
 

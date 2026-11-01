@@ -13,10 +13,49 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_rand_str(int size);
 int		ft_rand(int limit);
+int		*ft_rand_array(int size);
+char	ft_rand_elem(const char *list, int lsize);
 char	ft_rand_print(void);
+char	ft_rand_memval(void);
+char	*ft_rand_atoi(size_t nspaces, size_t ndigs);
+char	*ft_rand_str(int size);
 char	*ft_rand_str_small(int size_str, int size_mem);
+void	*ft_rand_mem(int size);
+size_t	ft_rand_elem_size(const size_t *list, int lsize);
+char	ft_rand_alpnum(void);
+char	*ft_rand_str_alpnum(int size);
+
+
+char	ft_rand_alpnum(void)
+{
+	char	ret;
+
+	ret = 0;
+	while (1)
+	{
+		ret = ft_rand(256);
+		if (ft_isalnum(ret))
+			break ;
+	}
+	return (ret);
+}
+
+char	*ft_rand_str_alpnum(int size)
+{
+	char	*str;
+	int		index;
+
+	index = 0;
+	str = malloc((size + 1) * sizeof(char));
+	while (index < size)
+	{
+		str[index] = ft_rand_alpnum();
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
+}
 
 int	ft_rand(int limit)
 {
