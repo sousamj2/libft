@@ -37,11 +37,11 @@ UNITS_01	= 	isalpha isdigit isalnum isascii isprint \
 			calloc strdup
 
 
-RAND_UNITS_02	= 	strjoin strtrim substr
+RAND_UNITS_02	= 	
 
 MEMO_UNITS_02	= 	
 
-UNITS_02	= 	strjoin strtrim substr
+UNITS_02	= 	strjoin strtrim substr split
 
 all: $(UNITS_01) $(UNITS_02)
 
@@ -105,13 +105,12 @@ eclean:
 
 norm1:
 	norminette $(AUX) \
-		$(addsuffix .c, $(addprefix ft_, $(UNITS_01)))  \
+		$(addsuffix .c, $(addprefix srcs1/ft_, $(UNITS_01)))  | \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 
 norm2:
-	norminette $(AUX) \
-		$(addsuffix .c, $(addprefix ft_, $(UNITS_02)))  \
+	norminette $(addsuffix .c, $(addprefix srcs2/ft_, $(UNITS_02)))  | \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 

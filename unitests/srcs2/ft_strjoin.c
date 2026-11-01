@@ -6,24 +6,23 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 11:21:59 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 12:14:53 by marisous         ###   ########.fr       */
+/*   Updated: 2026/10/31 23:53:18 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	char *s1;
-	char *s2;
-	char *res;
+	char	*s1;
+	char	*s2;
+	char	*res;
 
 	s1 = "Hello ";
 	s2 = "World!";
-	
-    if (argc >= 3)
-    {
+	if (argc >= 3)
+	{
 		s1 = argv[1];
 		s2 = argv[2];
 	}
