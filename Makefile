@@ -36,7 +36,8 @@ SRCS2	= 	ft_substr.c	\
 		ft_strjoin.c	\
 		ft_strtrim.c	\
 		ft_split.c	\
-		ft_itoa.c
+		ft_itoa.c	\
+		ft_strmapi.c
 
 OBJS	= $(addprefix $(OBJ_FOLDER)/, $(SRCS1:.c=.o) $(SRCS2:.c=.o))
 

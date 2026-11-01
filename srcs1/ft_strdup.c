@@ -19,10 +19,10 @@ char	*ft_strdup(const char *s)
 	size_t	size_confirm;
 
 	size = ft_strlen(s);
-	retval = malloc(size * sizeof(char));
+	retval = malloc((size + 1) * sizeof(char));
 	if (!retval)
 		return (NULL);
-	size_confirm = ft_strlcpy(retval, s, size);
+	size_confirm = ft_strlcpy(retval, s, size + 1);
 	if (size != size_confirm)
 		return (NULL);
 	return (retval);
