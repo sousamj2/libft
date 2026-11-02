@@ -45,7 +45,16 @@ SRCS2	= 	ft_substr.c	\
 		ft_putnbr_fd.c	\
 		ft_putendl_fd.c
 
-SRCS3	= 	
+SRCS3	= 	ft_lstnew.c		\
+		ft_lstadd_front.c 	\
+		ft_lstsize.c		\
+		ft_lstlast.c		\
+		ft_lstadd_back.c	\
+		ft_lstdelone.c		\
+		ft_lstclear.c		\
+		ft_lstiter.c		\
+		ft_lstmap.c		
+
 
 OBJS	= $(addprefix $(OBJ_FOLDER)/, $(SRCS1:.c=.o) $(SRCS2:.c=.o) $(SRCS3:.c=.o))
 
@@ -86,7 +95,7 @@ norm:
 clean: 
 	rm -rfv $(OBJ_FOLDER)
 
-fclean: clean
+fclean: 
 	rm -fv $(NAME)
 
 re: fclean all
@@ -103,7 +112,7 @@ eclean:
 unitests:
 	$(MAKE) -C unitests/ VALG=0 QUIET=1
 
-%: all
+uaa%: all
 	$(MAKE) -C unitests/ $@
 
-.PHONY: unitests all clean fclean eclean norm
+.PHONY: unitests all clean fclean eclean norm re

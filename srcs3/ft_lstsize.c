@@ -6,16 +6,9 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 16:42:52 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/02 16:47:36 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/02 20:14:35 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-/* typedef struct s_list */
-/* { */
-/* 	void			*content; */
-/* 	struct s_list	*next; */
-/* }				t_list; */
 
 #include "libft.h"
 

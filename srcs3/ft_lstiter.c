@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 17:51:15 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/02 20:08:58 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/02 20:15:11 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (lst == NULL)
-		return ;		
+		return ;
 	f(lst->content);
 	ft_lstiter(lst->next, f);
 }

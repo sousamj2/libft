@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 17:57:47 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/02 20:08:46 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/02 20:15:34 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *retval;
-	t_list *newlist;
+	t_list	*retval;
+	t_list	*newlist;
 
 	if (lst == NULL)
 		return (NULL);
 	newlist = ft_lstnew(f(lst->content));
 	if (newlist == NULL)
-		return (NULL);		
+		return (NULL);
 	retval = newlist;
 	while (lst->next != NULL)
 	{
