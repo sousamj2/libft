@@ -45,11 +45,11 @@ UNITS_02	= 	strjoin strtrim substr split itoa strmapi striteri \
 			putchar_fd putstr_fd putendl_fd putnbr_fd 
 
 
-RAND_UNITS_03	= 	
+RAND_UNITS_03	= 	arraylist  charlist  intlist  strlist
 
 MEMO_UNITS_03	= 	
 
-UNITS_03	= 	
+UNITS_03	= 	arraylist  charlist  intlist  strlist
 
 
 all: $(UNITS_01) $(UNITS_02) $(UNITS_03)
@@ -92,7 +92,7 @@ build1_%: srcs1/ft_%.c
 build2_%: srcs2/ft_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
-build3_%: srcs3/ft_%.c
+build3_%: srcs3/test_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
 %: build1_%
