@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 20:39:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/02 23:24:53 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/03 14:30:23 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ void del_call(void *c)
 
 void *copy_call(void *c)
 {
-	return(c);
-}
+	char *ptr;
 
+	ptr = ft_strdup((char *)c);
+	return (ptr);
+}
 
 void print_call_char(void *c)
 {
@@ -66,6 +68,8 @@ void *upper_call_char(void *c)
 	ptr = ft_strdup(&letter);
 	return (ptr);
 }
+
+
 
 void *upper_call_srt(void *c)
 {

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 07:03:16 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 12:15:36 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/03 15:38:34 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	size_alloc = ft_strlen(s1) + ft_strlen(s2);
-	retval = malloc((1 + size_alloc) * sizeof(char));
+	retval = ft_calloc((1 + size_alloc), sizeof(char));
 	if (!retval)
 		return (NULL);
 	while (*s1 != '\0')

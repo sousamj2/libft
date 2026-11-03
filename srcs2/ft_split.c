@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/01 01:05:27 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/03 15:38:04 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	**ft_allocate_string_array(char const *s, char c, size_t *nsplits)
 	*nsplits = ft_count_chars_c(s, c) + 1;
 	if (!ft_strlen(s))
 		*nsplits = 0;
-	retval = malloc((*nsplits + 1) * sizeof(char *));
+	retval = ft_calloc((*nsplits + 1), sizeof(char *));
 	if (!retval)
 		return (NULL);
 	return (retval);

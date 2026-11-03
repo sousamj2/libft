@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 19:25:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 20:03:55 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/03 15:44:47 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(void)
 	while (i_test < 200)
 	{
 		size = ft_rand_elem_size(varsizes, 6);
-		n = ft_rand(100);
+		n = 1 + ft_rand(100);
 		ptr = ft_calloc(n, size);
 		free(ptr);
 		i_test++;

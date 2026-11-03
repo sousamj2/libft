@@ -95,7 +95,7 @@ norm:
 clean: 
 	rm -rfv $(OBJ_FOLDER)
 
-fclean: 
+fclean: clean
 	rm -fv $(NAME)
 
 re: fclean all
@@ -112,7 +112,7 @@ eclean:
 unitests:
 	$(MAKE) -C unitests/ VALG=0 QUIET=1
 
-uaa%: all
+%: 
 	$(MAKE) -C unitests/ $@
 
 .PHONY: unitests all clean fclean eclean norm re

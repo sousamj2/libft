@@ -7,7 +7,8 @@ Q = $(if $(filter 1,$(QUIET)),@,)
 CC	= clang -std=c89 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I..
-LIBS	+= -L.. -lft -lc -lbsd
+CFLAGS	+= -L..
+LIBS	+= -lft -lc -lbsd
 PREXEC	= ulimit -v 131072; timeout 5s
 
 ifeq ($(VALG),1)
@@ -47,12 +48,16 @@ UNITS_02	= 	strjoin strtrim substr split itoa strmapi striteri \
 
 RAND_UNITS_03	= 	arraylist  charlist  intlist  strlist
 
-MEMO_UNITS_03	= 	
+MEMO_UNITS_03	=
+
+LIST_UNITS_03	= 	arraylist  charlist  intlist  strlist
 
 UNITS_03	= 	arraylist  charlist  intlist  strlist
 
+all: libft $(UNITS_01) $(UNITS_02) $(UNITS_03)
 
-all: $(UNITS_01) $(UNITS_02) $(UNITS_03)
+libft:
+	$(MAKE) -C ..
 
 test:
 	@echo --------------------
@@ -86,6 +91,8 @@ norm $(addprefix build1_, $(MEMO_UNITS_01)) \
 norm $(addprefix build2_, $(MEMO_UNITS_02)) \
 norm $(addprefix build3_, $(MEMO_UNITS_03)) : AUX += ft_memory.c
 
+norm $(addprefix build3_, $(LIST_UNITS_03)) : AUX += ft_lists.c
+
 build1_%: srcs1/ft_%.c
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
 
@@ -112,7 +119,7 @@ build:	$(addprefix build1_, $(UNITS_01)) \
 	$(addprefix build3_, $(UNITS_03))
 
 test_%: build2_%
-	python ~/work/Projects42/libft/unitests/srcs2/ft_$*.py
+	python ${PROJECTS}/libft/unitests/srcs2/ft_$*.py
 
 clean:
 	rm -f $(addprefix run_, $(UNITS_01))
@@ -146,5 +153,3 @@ norm3:
 norm: norm1 norm2 norm3
 
 .PHONY: all build eclean clean norm
-
-

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 08:34:57 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/01 08:34:57 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/03 15:34:55 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static char	*ft_itoa_mem(long *n_long, int *negative, size_t *nchars)
 	retval = ft_calloc(*nchars, sizeof(char));
 	if (!retval)
 		return (NULL);
-	ft_bzero(retval, *nchars);
 	if (negative)
 		*(retval) = '-';
 	return (retval);

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 09:50:22 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/01 09:50:22 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/03 13:41:52 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int	main(int argc, char *argv[])
 		printf("Number i [%d] str [%s] result [%s].\n",
 			number_int, number_str, result);
 	else
-		printf("Correct.");
+		printf("Number i [%d] str [%s] result [%s].\n",
+			number_int, number_str, result);
+		/* printf("Correct."); */
 	free(result);
 	free(number_str);
 	return (0);
