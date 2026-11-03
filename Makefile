@@ -4,9 +4,9 @@ CFLAGS	= -Wall -Wextra -Werror -I./
 NAME	= libft.a
 
 # As a 3 part project, the files were originally distributed 
-SRC_FOLDER_1	= srcs1
-SRC_FOLDER_2	= srcs2
-SRC_FOLDER_3	= srcs3
+SRC_FOLDER_1	= .
+SRC_FOLDER_2	= .
+SRC_FOLDER_3	= .
 OBJ_FOLDER	= objs
 
 PART_1	= 	isalpha isdigit isalnum isascii isprint strlen \
