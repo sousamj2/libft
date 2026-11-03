@@ -57,9 +57,7 @@ int	main(int argc, char *argv[])
 {
 	int		option;
 	char	*str;
-	int		debug;
 
-	debug = 1;
 	option = 0;
 	str = "Hello World!";
 	if (argc == 3)
@@ -78,7 +76,5 @@ int	main(int argc, char *argv[])
 	else
 		ft_striteri(str, ft_identity);
 	printf("%s", str);
-	if (debug)
-		return (1);
 	return (0);
 }

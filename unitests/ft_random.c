@@ -26,7 +26,6 @@ size_t	ft_rand_elem_size(const size_t *list, int lsize);
 char	ft_rand_alpnum(void);
 char	*ft_rand_str_alpnum(int size);
 
-
 char	ft_rand_alpnum(void)
 {
 	char	ret;

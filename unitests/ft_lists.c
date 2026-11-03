@@ -12,13 +12,12 @@
 
 #include "libft.h"
 
-char ft_upper(unsigned int index, char c);
+char	ft_upper(unsigned int index, char c);
 char	ft_lower(unsigned int index, char c);
 char	ft_odd_up_even_down(unsigned int index, char c);
 char	ft_up1_down2_id3(unsigned int index, char c);
 
-
-void	ft_lstiter_fd(t_list *lst, int fd, void (*g)(void *, int))
+void	ft_lstiter_fd(t_list *lst, int fd, void (*g)(void*, int))
 {
 	if (lst == NULL)
 		return ;
@@ -26,77 +25,74 @@ void	ft_lstiter_fd(t_list *lst, int fd, void (*g)(void *, int))
 	ft_lstiter_fd(lst->next, fd, g);
 }
 
-void del_call(void *c)
+void	del_call(void *c)
 {
 	free(c);
 }
 
-void *copy_call(void *c)
+void	*copy_call(void *c)
 {
-	char *ptr;
+	char	*ptr;
 
 	ptr = ft_strdup((char *)c);
 	return (ptr);
 }
 
-void print_call_char(void *c)
+void	print_call_char(void *c)
 {
-	ft_putchar_fd( *(char *) c, 1);
+	ft_putchar_fd(*(char *) c, 1);
 }
 
-void print_call_str(void *c)
+void	print_call_str(void *c)
 {
-	ft_putstr_fd( (char *) c, 1);
+	ft_putstr_fd((char *) c, 1);
 }
 
-void print_call_char_fd(void *c, int fd)
+void	print_call_char_fd(void *c, int fd)
 {
-	ft_putchar_fd( *(char *) c, fd);
+	ft_putchar_fd(*(char *) c, fd);
 }
 
-void print_call_str_fd(void *c, int fd)
+void	print_call_str_fd(void *c, int fd)
 {
-	ft_putstr_fd( (char *) c, fd);
+	ft_putstr_fd((char *) c, fd);
 }
 
-void *upper_call_char(void *c)
+void	*upper_call_char(void *c)
 {
-	char letter;
-	char *ptr;
+	char	letter;
+	char	*ptr;
 
 	letter = ft_toupper(*((char *)c));
 	ptr = ft_strdup(&letter);
 	return (ptr);
 }
 
-
-
-void *upper_call_srt(void *c)
+void	*upper_call_srt(void *c)
 {
-	char *str;
+	char	*str;
 
 	str = ft_strmapi((char *) c, ft_upper);
 	return (str);
 }
 
-void *lower_call_srt(void *c)
+void	*lower_call_srt(void *c)
 {
-	char *str;
+	char	*str;
 
 	str = ft_strmapi((char *) c, ft_lower);
 	return (str);
 }
 
-void *lower_call_char(void *c)
+void	*lower_call_char(void *c)
 {
-	char letter;
-	char *ptr;
+	char	letter;
+	char	*ptr;
 
 	letter = ft_tolower(*((char *)c));
 	ptr = ft_strdup(&letter);
 	return (ptr);
 }
-
 
 char	ft_upper(unsigned int index, char c)
 {
@@ -130,4 +126,33 @@ char	ft_up1_down2_id3(unsigned int index, char c)
 		return (ft_tolower(c));
 	else
 		return (c);
+}
+
+void	*ft_lstrmeli(t_list *lst, size_t to_delete, void (*del) (void *))
+{
+	size_t	index;
+	t_list	*next;
+	t_list	*lst_el;
+	t_list	*prev;
+
+	if (lst == NULL || ft_lstsize(lst) < to_delete)
+		return (NULL);
+	if (to_delete == 0)
+	{
+		next = lst->next;
+		ft_lstdelone(lst, del);
+		return (next);
+	}
+	index = 0;
+	lst_el = lst;
+	while (index < to_delete)
+	{
+		prev = lst_el;
+		lst_el = lst_el->next;
+		index++;
+	}
+	next = lst_el->next;
+	ft_lstdelone(lst_el, del);
+	prev->next = next;
+	return (lst);
 }

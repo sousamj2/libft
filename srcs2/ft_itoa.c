@@ -35,7 +35,7 @@ static char	*ft_itoa_mem(long *n_long, int *negative, size_t *nchars)
 	retval = ft_calloc(*nchars, sizeof(char));
 	if (!retval)
 		return (NULL);
-	if (negative)
+	if (*negative)
 		*(retval) = '-';
 	return (retval);
 }
@@ -67,6 +67,8 @@ char	*ft_itoa(int n)
 
 	n_long = n;
 	retval = ft_itoa_mem(&n_long, &neg, &nchars);
+	if (retval == NULL)
+		return (NULL);
 	power10 = ft_get_max_power(nchars - neg - 1, n_long);
 	if (neg)
 		retval++;

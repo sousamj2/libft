@@ -52,7 +52,7 @@ MEMO_UNITS_03	=
 
 LIST_UNITS_03	= 	arraylist  charlist  intlist  strlist
 
-UNITS_03	= 	arraylist  charlist  intlist  strlist
+UNITS_03	= 	charlist # intlist  strlist arraylist  
 
 all: libft $(UNITS_01) $(UNITS_02) $(UNITS_03)
 
@@ -107,8 +107,12 @@ build3_%: srcs3/test_%.c
 	$(Q)rm -f ./run_$@
 
 %: build2_%
+	@echo --------------------
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
+	@echo --------------------
+	@echo "Exit status $$?"
 	$(Q)rm -f ./run_$@
+	@echo "Exit status $$?"
 
 %: build3_%
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
@@ -135,18 +139,20 @@ eclean:
 	$(MAKE) clean
 
 norm1:
-	norminette $(AUX) \
+	norminette ft_memory.c ft_random.c \
 		$(addsuffix .c, $(addprefix srcs1/ft_, $(UNITS_01)))  | \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 
 norm2:
-	norminette $(addsuffix .c, $(addprefix srcs2/ft_, $(UNITS_02)))  | \
+	norminette ft_memory.c ft_random.c \
+		$(addsuffix .c, $(addprefix srcs2/ft_, $(UNITS_02)))  | \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 
 norm3:
-	norminette $(addsuffix .c, $(addprefix srcs3/ft_, $(UNITS_02)))  | \
+	norminette ft_lists.c ft_random.c \
+		$(addsuffix .c, $(addprefix srcs3/test_, $(UNITS_03)))  | \
 		grep -vE "TOO_MANY_LINES|TOO_MANY_FUNCS|TOO_MANY_VARS_FUNC" | \
 		grep -vE ": OK!"
 

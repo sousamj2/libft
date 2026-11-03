@@ -1,0 +1,31 @@
+# Compile with M-x org-md-export-to-markdown
+
+/This project has been created as part of the 42 curriculum by marisous/
+
+* Description
+
+This project aims to build a static function library libft.a to be used in more advance projects.
+
+Besides the standard C programming, the project gave the developer the first hands on aproach with valgrind and gdb.
+
+The project is by definition divided into 3 parts: libc functions, some additional functions and a link list handler.
+
+The initial structure of the project follow this partition and three separate directories were created: srcs1, srcs2 and srcs3. As this is often common in the world (and to practice writting rules), the Makefile kept the variables SRC_FOLDER_[123], although now the point to the top directory (./)...
+
+* Instructions
+
+** Main Program
+The project is just the creation of the static library lib.a, so running make at the repository folder, compiles all the object files (*.o) into the "objs/" folder. After, it uses the archive tool (ar) to create the library from the objects.
+
+Additionally, the required rules are set: all (default), $(NAME), clean, fclean and re. All except $(NAME) are added to the .PHONY rule.
+
+** Additional rules of Makefile
+test: prints the 3 main variables: NAME, OBJS and SRCS for cross check.
+
+norm: runs norminette with reduce printouts (only if there are any issues).
+
+eclean: used to prepare the configuration for the emacs editor to use the C language server protocol (LSP). This is an advance feature for emacs users, which I will be happy to demonstrate back in my area...
+
+** Testing framework
+
+You will soon discovered that there is not a single (commented) main function in this project. But that does not mean no test were made. In fact, instead of relying on outsite packages, I have created the puppet (marionnette). They are currently located in the TAG marionnette-01 of this project, which unfortunatelly cannot be a part of the submitted version. I encorage the evaluator to checkout that version with **"git checkout marionnette-01"**, which should just add the folder unitests back to the project. Then, you can run **make unitests** and the get a quick overview of the tests, without using valgrind and with most output removed. More details should be present in that folder.
