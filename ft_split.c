@@ -60,10 +60,13 @@ static char	**ft_allocate_string_array(char const *s, char c, size_t *nsplits)
 	return (retval);
 }
 
-static void	*ft_release_mem(char **s, size_t isplit)
+static void	*ft_release_mem(char **s, int isplit)
 {
 	while (isplit >= 0)
+	{
 		free(s[isplit]);
+		isplit--;
+	}
 	free(s);
 	return (NULL);
 }
