@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 07:10:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 17:39:37 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 17:33:01 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	stop = ft_find_stop(s1, set);
 	len = (int)size - (int)start - (int)stop;
 	if (len < 0)
-		return (strdup(""));
+		return (ft_strdup(""));
 	return (ft_substr(s1, start, size - start - stop));
 }
