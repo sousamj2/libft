@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/31 23:56:49 by marisous          #+#    #+#              #
-#    Updated: 2026/11/01 01:08:14 by marisous         ###   ########.fr        #
+#    Updated: 2026/11/05 01:16:59 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,11 +14,11 @@ import random
 import string
 import subprocess
 
-debug = False
+debug = True
 
 Ntests = 1000
 if debug:
-    Ntests = 10
+    Ntests = 1
 
 for i in range(Ntests):
     # chars = ''.join(chr(i) for i in range(0x21, 0x7f))
@@ -28,6 +28,9 @@ for i in range(Ntests):
     # chars += r' \t\n\v\f\r'
     s = ''.join(random.choices(chars, k=random.randint(0, 100)))
     c = random.choice(chars)
+
+    s = "aaa"
+    c = 'a'
     
     expected = [x for x in s.split(c) if x]
 
@@ -36,8 +39,6 @@ for i in range(Ntests):
         capture_output=True,
         text=True
     )
-
-    
 
     actual = result.stdout.splitlines()
 
@@ -49,7 +50,7 @@ for i in range(Ntests):
         print(f"result: [{result.stdout}]")
         print(f"expected: {expected!r}")
         print(f"received: {actual!r}")
-        if not debug:
-            break
+        # if not debug:
+        exit(1)
 else:
     print(f"{Ntests} tests passed")    
