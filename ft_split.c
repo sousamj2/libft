@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 16:44:19 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 16:46:56 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 	char	**retval;
 	size_t	size_trim;
 
-	if (trim_s == NULL)
-		return (NULL);
 	size_trim = ft_strlen(trim_s);
 	*nsplits = 0;
 	while (*trim_s == c)
