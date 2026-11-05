@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 09:16:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 00:07:47 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 03:11:59 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 				return ((char *) big);
 		}
 		big++;
-		len--;		
+		len--;
 	}
 	return (NULL);
 }

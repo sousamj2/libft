@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 02:37:51 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 03:11:05 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,23 @@ static size_t	ft_next_c(const char *s, int c)
 	return (size_str);
 }
 
-static size_t	ft_count_chars_c(char const *s, char c)
-{
-	size_t	retval;
-
-	retval = 0;
-	while (*s == c)
-		s++;
-	while (*s != '\0')
-	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
-			retval++;
-		s++;
-	}
-	return (retval);
-}
-
 static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 {
-	char **retval;
-	
-	*nsplits = ft_count_chars_c(trim_s, c) + 1;
-	if (!ft_strlen(trim_s))
+	char	**retval;
+	size_t	size_trim;
+
+	size_trim = ft_strlen(trim_s);
+	*nsplits = 0;
+	while (*trim_s == c)
+		trim_s++;
+	while (*trim_s != '\0')
+	{
+		if (*trim_s == c && *(trim_s + 1) != c && *(trim_s + 1) != '\0')
+			(*nsplits)++;
+		trim_s++;
+	}
+	(*nsplits)++;
+	if (!size_trim)
 		*nsplits = 0;
 	retval = ft_calloc((*nsplits + 1), sizeof(char *));
 	if (!retval)
@@ -68,43 +63,46 @@ static void	*ft_release_mem(char **s, int isplit, char *trim_s)
 		isplit--;
 	}
 	free(s);
-	free(trim_s);	
+	free(trim_s);
 	return (NULL);
+}
+
+static char	*ft_trim_char(char const *s, char c)
+{
+	char	*trim_s;
+	char	cc[2];
+
+	cc[0] = c;
+	cc[1] = '\0';
+	trim_s = ft_strtrim(s, cc);
+	return (trim_s);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t			nsplits;
-	size_t			isplit;
-	size_t			next_c;
-	char			**retval;
+	size_t	splits[2];
+	size_t	next_c;
+	char	**retval;
+	char	*trim_s[2];
 
-	char *trim_s[2];
-	char cc[2];
-	
-	cc[0] = c;
-	cc[1] = '\0';
-
-	trim_s[1] = ft_strtrim(s, cc);
-	trim_s[0] =  trim_s[1];
-	
-	retval = ft_allocate_string_array(trim_s[1], c, &nsplits);
+	trim_s[0] = ft_trim_char(s, c);
+	trim_s[1] = trim_s[0];
+	retval = ft_allocate_string_array(trim_s[1], c, &splits[0]);
 	if (!retval)
 		return (NULL);
-	isplit = 0;
-	while (isplit < nsplits)
+	splits[1] = 0;
+	while (splits[1] < splits[0])
 	{
 		next_c = ft_next_c(trim_s[1], c);
-		retval[isplit] = ft_substr(trim_s[1], 0, next_c);
-		if (!retval[isplit])
-			return (ft_release_mem(retval, isplit, trim_s[1]));
+		retval[splits[1]] = ft_substr(trim_s[1], 0, next_c);
+		if (!retval[splits[1]])
+			return (ft_release_mem(retval, splits[1], trim_s[1]));
 		trim_s[1] += next_c + 1;
-		if (ft_strlen(retval[isplit]) > 0)
-			isplit++;
+		if (ft_strlen(retval[splits[1]]) > 0)
+			retval[++splits[1]] = NULL;
 		else
-			free(retval[isplit]);
+			free(retval[splits[1]]);
 	}
-	retval[isplit] = NULL;
 	free(trim_s[0]);
 	return (retval);
 }
