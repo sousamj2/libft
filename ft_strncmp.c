@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 19:17:37 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 03:11:42 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 11:50:17 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		if (*us1 != *us2)
 			return (*us1 - *us2);
+		/* { */
+		/* 	if (*us1 > *us2) return (1); else return (-1); */
+		/* } */
 		us1++;
 		us2++;
 		index++;

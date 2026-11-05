@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 19:30:35 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 00:41:58 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 11:26:30 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -38,7 +38,7 @@ int	ft_two_strings(char *s1, char *s2, size_t n)
 
 	ret1 =    strncmp(s1, s2, n);
 	ret2 = ft_strncmp(s1, s2, n);
-	if (ret1 != ret2)
+	if (ret1 != ret2 )
 	{
 		printf("(correct) ret1[%d]\n   (mine) ret2[%d]\n", ret1, ret2);
 		printf("s1[%s] s2[%s] n[%lu]\n", s1, s2, n);

@@ -4,7 +4,7 @@ DEBUG	= -g -O0
 QUIET	= 0
 Q = $(if $(filter 1,$(QUIET)),@,)
 
-CC	= clang -std=c89 -D_DEFAULT_SOURCE
+CC	= cc -std=c99 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I..
 CFLAGS	+= -L..
@@ -42,9 +42,7 @@ RAND_UNITS_02	= 	putchar_fd putstr_fd putendl_fd putnbr_fd
 
 MEMO_UNITS_02	= 	
 
-# UNITS_02	= 	test_strjoin test_strtrim test_substr test_split \
-
-UNITS_02	= 	test_strjoin test_strtrim test_substr \
+UNITS_02	= 	test_strjoin test_strtrim test_substr test_split \
 			test_itoa test_strmapi test_striteri test_putchar_fd \
 			test_putstr_fd test_putendl_fd test_putnbr_fd 
 
@@ -107,7 +105,7 @@ build3_%: srcs3/test_%.c
 
 %: build1_%
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
-	$(Q)rm -f ./run_$@
+	# $(Q)rm -f ./run_$@
 
 %: build2_%
 	@echo --------------------
