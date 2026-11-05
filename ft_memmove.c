@@ -6,18 +6,19 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:01:56 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 22:10:28 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/04 23:35:08 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 static unsigned char	*ft_overlap(unsigned char *dest,
 							const unsigned char *src, size_t n)
 {
 	size_t	iter;
 
-	if ((long) dest - (long) src - (long) n < 0)
+	if (dest > src)
 	{
 		iter = n;
 		while (iter > 0)
@@ -45,8 +46,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	ptr_dest = (unsigned char *) dest;
 	ptr_src = (const unsigned char *) src;
-	if ((long) dest - (long) src - (long) n < 0
-		|| (long) src - (long) dest - (long) n < 0)
+	if (dest < src + n || src < dest + n)
 		return (ft_overlap(ptr_dest, ptr_src, n));
 	else
 		return (ft_memcpy(dest, src, n));

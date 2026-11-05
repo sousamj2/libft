@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 08:33:18 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:53:51 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:35:44 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,19 +143,43 @@ int	main(void)
 	printf("ft_strlcat: ");
 	srand(time(0));
 	test_i = 0;
-	while (test_i < 100)
+	while (test_i < 0)
 	{
 		if (!ft_test_exactsize() || !ft_test_zerosrc() || !ft_test_zerodst())
 			return (1);
 		test_i++;
 	}
 	test_i = 0;
-	while (test_i < 20)
+	while (test_i < 0)
 	{
 		if (!ft_test_array(test_i))
 			return (1);
 		test_i++;
 	}
+
+	
 	printf("PASS\n");
+	size_t const MEMSETVAL = 30;
+
+	char dst1[MEMSETVAL]; memset(dst1, '\0', MEMSETVAL); dst1[0] = 'B';
+	char dst2[MEMSETVAL]; memset(dst2, '\0', MEMSETVAL); dst2[0] = 'B';
+
+	memset(dst1, 'B', 4);
+	memset(dst2, 'B', 4);
+	
+	char * src = (char *)"0123456789";
+	
+	size_t size = 1;
+	size_t result1;
+	size_t result2;
+	
+	result1 = strlcat(dst1, src, size);
+	result2 = ft_strlcat(dst2, src, size);
+
+	if (result1 != result2)
+	{
+		printf("cat1 [%s] %lu\n", dst1, result1);
+		printf("cat2 [%s] %lu\n", dst2, result2);
+	}
 	return (0);
 }

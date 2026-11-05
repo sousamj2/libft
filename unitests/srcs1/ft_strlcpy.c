@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 07:14:26 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:52:34 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:36:13 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -90,6 +90,24 @@ int	main(void)
 			return (1);
 		test_i++;
 	}
+	
 	printf("PASS\n");
+
+	/* /\* char *dst2 = malloc(10 * sizeof(char)); *\/ */
+	/* char dst2[10]; */
+	/* size_t result1; */
+	/* memset(dst2, 'A', 10); */
+	/* result1 =    strlcpy(dst2, "test", 1); */
+	/* printf("[%s] %lu %d \n", dst2, result1 , dst2[result1+1]); */
+	/* free(dst2); */
+
+	/* /\* char *dst1 = malloc(10 * sizeof(char)); *\/ */
+	/* char dst1[10]; */
+	/* ft_memset(dst1, 'A', 10); */
+	/* size_t result0; */
+	/* result0 = ft_strlcpy(dst1, "test", 1); */
+	/* printf ("[%s] %lu %d\n", dst1, result0 , dst1[result0+1]); */
+	/* free(dst1); */
+	
 	return (0);
 }

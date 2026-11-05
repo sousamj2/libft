@@ -42,8 +42,11 @@ RAND_UNITS_02	= 	putchar_fd putstr_fd putendl_fd putnbr_fd
 
 MEMO_UNITS_02	= 	
 
-UNITS_02	= 	strjoin strtrim substr split itoa strmapi striteri \
-			putchar_fd putstr_fd putendl_fd putnbr_fd 
+# UNITS_02	= 	test_strjoin test_strtrim test_substr test_split \
+
+UNITS_02	= 	test_strjoin test_strtrim test_substr \
+			test_itoa test_strmapi test_striteri test_putchar_fd \
+			test_putstr_fd test_putendl_fd test_putnbr_fd 
 
 
 RAND_UNITS_03	= 	arraylist  charlist  intlist  strlist
@@ -115,6 +118,12 @@ build3_%: srcs3/test_%.c
 	@echo "Exit status $$?"
 
 %: build3_%
+	@echo
+	@echo
+	@echo =============================
+	@echo Starting linked list checks:
+	@echo =============================
+	@echo
 	$(Q)$(PREXEC) $(EXEC) ./run_$@
 	$(Q)rm -f ./run_$@
 

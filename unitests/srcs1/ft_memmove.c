@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 21:04:49 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:51:59 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:26:29 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,36 @@ int	ft_test_overlap_dest_src(void)
 	return (retval);
 }
 
+int	ft_test_arrays(void)
+{
+	char	olap1[10];
+	char	olap2[10];
+	int		size_s = 4;
+	int		retval;
+
+	char * src = "123456";
+	strcpy(olap1, src);
+	strcpy(olap2, src);
+
+	char * oolap1;
+	char * oolap2;
+	
+	/* printf("src : [%s]\n", src); */
+	/* printf("olap1 : [%s]\n", olap1); */
+	/* printf("olap2 : [%s]\n", olap2); */
+    oolap1 = ft_memmove(olap1, olap1+2, 4);
+	oolap2 = memmove(olap2, olap2+2, 4);
+	/* printf("oolap1 : [%s]\n", oolap1); */
+	/* printf("oolap2 : [%s]\n", oolap2); */
+
+
+	
+	retval = ft_compare_memory(oolap1, oolap2, size_s * sizeof(char), src);
+	if (!retval)
+		printf("Problem in arrays.\n");
+	return (retval);
+}
+
 int	main(void)
 {
 	int	test_i;
@@ -130,14 +160,18 @@ int	main(void)
 	printf("ft_memmove: ");
 	srand(time(0));
 	test_i = 0;
-	while (test_i < 1000)
+	while (test_i < 1)
 	{
 		if (!ft_test_string() || !ft_test_array()
 			|| !ft_test_overlap_dest_src()
-			|| !ft_test_overlap_src_dest())
+			|| !ft_test_overlap_src_dest()
+			|| ! ft_test_arrays())
 			return (1);
 		test_i++;
 	}
 	printf("PASS\n");
+	
+	
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 11:21:32 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/31 23:55:01 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:53:26 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	main(int argc, char *argv[])
 	char			*s;
 	char			*result;
 
-	start = 0;
-	len = 54;
-	s = "a\0";
+	start = 5;
+	len = 2;
+	/* printf("%lu\n", len); */
+	s = "hola";
 	if (argc == 4)
 	{
 		start = ft_atoi(argv[1]);

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 19:30:35 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 22:17:07 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:41:58 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -36,11 +36,13 @@ int	ft_two_strings(char *s1, char *s2, size_t n)
 	int	ret1;
 	int	ret2;
 
-	s2 = s1;
-	ret1 = strncmp(s1, s2, n);
+	ret1 =    strncmp(s1, s2, n);
 	ret2 = ft_strncmp(s1, s2, n);
 	if (ret1 != ret2)
-		printf("s1[%s] s2[%s]\n", s1, s2);
+	{
+		printf("(correct) ret1[%d]\n   (mine) ret2[%d]\n", ret1, ret2);
+		printf("s1[%s] s2[%s] n[%lu]\n", s1, s2, n);
+	}
 	return (ret1 == ret2);
 }
 
@@ -71,8 +73,14 @@ int	main(void)
 		|| !ft_two_strings("aca", "aab", 3) || !ft_two_strings("daa", "aaab", 3)
 		|| !ft_two_strings("aaa", "aaab", 3) || !ft_two_strings("", "aaab", 3)
 		|| !ft_two_strings("aaa", "", 3) || !ft_two_strings("aaa", "aaab", 0)
-		|| !ft_two_strings("", "", 3))
+		|| !ft_two_strings("", "", 3)
+
+		|| !ft_two_strings("test\1100", "test\0", 10)
+
+		)
 		return (1);
-	printf("ft_strlen: PASS\n");
+	printf("ft_strncmp: PASS\n");
+
+	
 	return (0);
 }

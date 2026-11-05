@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:17:32 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 11:59:13 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:45:48 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,28 @@ int	main(void)
 		test_i++;
 	}
 	printf("ft_strnstr: PASS\n");
+
+	char	*str[2];
+	size_t	sizeof_str;
+	char	*ret[2];
+
+	str[0] = "lorem ipsum dolor sit amet";
+	str[1] = "dolor";
+	sizeof_str = 17;
+	
+	ret[0] =    strnstr(str[0], str[1], sizeof_str);
+	ret[1] = ft_strnstr(str[0], str[1], sizeof_str);
+	if (ret[0] != ret[1])
+	{
+		printf("ft_strnstr: FAIL\n");
+		printf("\(real) ret0 [%p]: [%s]\n(mine) ret1 [%p]: [%s]\n\n", ret[0], ret[0], ret[1], ret[1]);
+		printf("s1[%p]: [%s]\n", str[0], str[0]);
+		printf("s2[%p]: [%s]\n", str[1], str[1]);
+		printf("size ret1 [%lu]\n", ft_strlen(ret[1]));
+		printf("size str0 [%lu]\n", ft_strlen(str[0]));
+		printf("\n");
+		printf("\n");
+	}
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:15:46 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 20:04:17 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/04 19:36:34 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_compare_memory(void *truth, void *test, size_t size_s, char *src)
 	size_t			index;
 	unsigned char	*ptr_tru;
 	unsigned char	*ptr_tes;
-
+	
 	index = 0;
 	ptr_tes = test;
 	ptr_tru = truth;
@@ -50,7 +50,12 @@ int	ft_compare_memory(void *truth, void *test, size_t size_s, char *src)
 	{
 		if (*ptr_tes != *ptr_tru)
 		{
+			printf("  index: [%lu]\n", index);
+
 			printf("  src: [%p] %s\n", src, src);
+			printf("truth: [%s] %d\n",ptr_tes,*ptr_tes);
+			printf(" test: [%s] %d\n",ptr_tru,*ptr_tru);
+			
 			return (0);
 		}
 		index++;

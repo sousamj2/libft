@@ -1,5 +1,5 @@
 CC	= clang # cc
-CFLAGS	= -Wall -Wextra -Werror -I./
+CFLAGS	= -Wall -Wextra -Werror  -gdwarf-4 -I./
 
 NAME	= libft.a
 

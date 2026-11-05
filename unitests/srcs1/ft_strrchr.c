@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 19:01:05 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 19:54:03 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:30:44 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,17 @@ int	main(void)
 		test_i++;
 		free(str[0]);
 	}
-	printf("ft_strchr: PASS\n");
+	printf("ft_strnchr: PASS\n");
+
+
+	str[0] = "teste";
+	str[2] = ft_strrchr(str[0], 'e' + 256);
+	str[1] = strrchr(str[0], 'e' +256);
+
+	/* printf("[%s] (correct)\n[%s] (mine)\n", str[1], str[2]); */
+	/* printf("[%p] (correct)\n[%p] (mine)\n", str[1], str[2]); */
+	/* printf("[%p]\n", str[1] + strlen(str[1])); */
+	/* printf("[%p]\n", str[2] + strlen(str[2])); */
+	
 	return (0);
 }

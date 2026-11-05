@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 12:07:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 22:09:06 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/04 09:48:15 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_atoi(const char *nptr)
 		signal = -1;
 		num++;
 	}
-	if (num[0] == '+')
+	else if (num[0] == '+')
 		num++;
 	while (ft_isdigit(*num))
 	{

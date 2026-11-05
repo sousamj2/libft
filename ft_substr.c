@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 22:49:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/03 15:36:20 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/04 15:39:01 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 static size_t	ft_size_alloc(char const *s, unsigned int start, size_t len)
 {
-	int	size_str;
+	size_t	size_str;
 
 	size_str = ft_strlen(s);
-	if (size_str <= (int) start)
+	if (size_str <= start)
 		return (0);
-	else if (size_str - (int) start < (int) len)
-		return (size_str - (int) start);
+	else if (size_str < len + start)
+		return (size_str - start);
 	else
 		return (len);
 }

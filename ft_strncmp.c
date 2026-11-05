@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 19:17:37 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/29 22:11:32 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:44:02 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,23 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	index;
+	size_t			index;
+	unsigned char	*us1;
+	unsigned char	*us2;
 
+	us1 = (unsigned char *) s1;
+	us2 = (unsigned char *) s2;
 	index = 0;
-	while (*s1 != '\0' && *s2 != '\0' && index < n)
+	while ((*us1 != '\0' || *us2 != '\0') && index < n)
 	{
-		if (*s1 != *s2)
-			return ((int) *s1 - *s2);
-		s1++;
-		s2++;
+		/* if (*us1 < *us2) */
+		/* 	return (-1); */
+		/* else if (*us1 > *us2) */
+		/* 	return (1); */
+		if (*us1 != *us2)		
+			return (*us1 - *us2);
+		us1++;
+		us2++;
 		index++;
 	}
 	return (0);

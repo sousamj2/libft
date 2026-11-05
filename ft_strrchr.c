@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 18:58:04 by marisous          #+#    #+#             */
-/*   Updated: 2026/10/28 19:11:53 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/04 23:36:40 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*ichar;
+	char	search;
 
 	ichar = (char *) s;
+	search = (char) c;
+	if (search == '\0')
+		return (ichar + ft_strlen(s));
 	while (*ichar != '\0')
 		ichar++;
 	while (ichar != s - 1)
 	{
-		if (*ichar == c)
+		if (*ichar == search)
 			return (ichar);
 		ichar--;
 	}

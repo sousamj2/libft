@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 18:38:08 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/01 01:09:30 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/05 00:55:18 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@ void	ft_print_list(char **split_list)
 	char	**tmp;
 
 	tmp = split_list;
+	if (*split_list == NULL)
+		printf("NULL\n");
 	while (*split_list != NULL)
 	{
 		printf("%s\n", *split_list);
+		/* printf("[%p]: [%s]end\n", *split_list, *split_list); */
+		fflush(stdout);
 		free(*split_list);
 		split_list++;
+	if (*split_list == NULL)
+		printf("NULL\n");
 	}
 	free(tmp);
 }
@@ -31,13 +37,13 @@ int	main(int argc, char *argv[])
 {
 	char	*s;
 	char	c;
-	char	*exp;
+	/* char	*exp; */
 	int		debug;
 	char	**res;
 
-	s = "7CJAKVIkdmEbZAgtqlLEO2j0K8acjyNcsZgQ1wdo1Tm9O2Rt0nHENxr51nKTRWJz80";
-	c = 'a';
-	exp = "'b', 'b', 'b', 'b'";
+	s = "";
+	c = '0';
+	/* exp = "..."; */
 	debug = 0;
 	if (argc == 3)
 	{
@@ -47,11 +53,11 @@ int	main(int argc, char *argv[])
 	}
 	if (debug)
 	{
-		printf("\n--------------\n");
-		printf("--------------\n");
+		/* printf("\n--------------\n"); */
+		/* printf("--------------\n"); */
 		printf("s1: [%s]\nset: [%c]\n", s, c);
-		printf("Expected: [%s]\n", exp);
-		printf("--------------\n");
+		/* printf("Expected: [%s]\n", exp); */
+		/* printf("--------------\n"); */
 	}
 	res = ft_split(s, c);
 	if (res != NULL)

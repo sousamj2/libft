@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/01 16:10:37 by marisous          #+#    #+#              #
-#    Updated: 2026/11/03 11:12:01 by marisous         ###   ########.fr        #
+#    Updated: 2026/11/05 00:59:19 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,6 +22,8 @@ Ntests = 1000
 if debug:
     Ntests = 10
 
+print("\n\n List tests:")
+    
 for i in range(Ntests):
 
     filename = None
