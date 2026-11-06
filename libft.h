@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:36:15 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 13:22:05 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/06 13:28:41 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,62 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+/**
+ * @brief Function that determines if a character is alphabetical.
+ *
+ * @param c character to test.
+ *
+ * @return 1 is alpha and 0 otherwhise.
+ */
 int				ft_isalpha(int c);
+
+/**
+ * @brief Function that determines if a character is numerical.
+ *
+ * @param c character to test.
+ *
+ * @return 1 is numerical and 0 otherwhise.
+ */
 int				ft_isdigit(int c);
+
+/**
+ * @brief Function that determines if a character is numerical or alphabetical.
+ *
+ * @param c character to test.
+ *
+ * @return 1 is alpha-numerical and 0 otherwhise.
+ */
 int				ft_isalnum(int c);
+
+/**
+ * @brief Function that determines if a character is from the ascii table.
+ *
+ * @param c character to test.
+ *
+ * @return 1 is ascii and 0 otherwhise.
+ */
 int				ft_isascii(int c);
+
+/**
+ * @brief Function that determines if a character is printable.
+ *
+ * @param c character to test.
+ *
+ * @return 1 is numerical and 0 otherwhise.
+ */
 int				ft_isprint(int c);
+
+/**
+ * @brief Function that sets the from the place in memory 's' up to 'n' bytes forward with the value 'c'.
+ *
+ * @param s the place in memory to start setting.
+ * @param c character to set.
+ * @param n the number of bytes that will be set.
+ *
+ * @return Not appliable.
+ */
 void			*ft_memset(void *s, int c, size_t n);
+
 void			ft_bzero(void *s, size_t n);
 size_t			ft_strlen(const char *s);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
