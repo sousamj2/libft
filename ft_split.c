@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 18:10:24 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 11:25:50 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ char	**ft_split(char const *s, char c)
 		if (!retval[splits[1]])
 			return (ft_release_mem(retval, splits[1], trim_s[1]));
 		trim_s[1] += next_c + 1;
-		if (ft_strlen(retval[splits[1]]) > 1)
+		if (ft_strlen(retval[splits[1]]) > 0 && retval[splits[1]][0] != '\0')
 			retval[++splits[1]] = NULL;
 		else
 			free(retval[splits[1]]);
