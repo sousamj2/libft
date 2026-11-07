@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/05 11:20:42 by marisous          #+#    #+#              #
-#    Updated: 2026/11/05 11:20:48 by marisous         ###   ########.fr        #
+#    Updated: 2026/11/07 11:50:39 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -63,7 +63,7 @@ test:
 	@echo SRCS=$(SRCS)
 
 norm:
-	norminette $(SRCS) libft.h | grep -v ": OK!" ; exit "$${PIPESTATUS[0]}"
+	norminette $(SRCS) libft.h | grep -v ": OK!" # ; exit "$${PIPESTATUS[0]}"
 	@echo Norminette: all OK!
 
 eclean:

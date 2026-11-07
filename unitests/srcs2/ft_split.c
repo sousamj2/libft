@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 18:38:08 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 14:50:58 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:00:58 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,33 @@ int	main(int argc, char *argv[])
 {
 	char	*s;
 	char	c;
-	/* char	*exp; */
+	char	*exp;
 	int		debug;
 	char	**res;
 
-	s = "hello!";
+	s = "";
 	c = ' ';
-	/* exp = "..."; */
-	debug = 0;
+	exp = "...";
+	debug = 1;
 	if (argc == 3)
 	{
 		s = argv[1];
 		c = argv[2][0];
 		debug = 0;
 	}
+	res = ft_split(s, c);
 	if (debug)
 	{
-		/* printf("\n--------------\n"); */
-		/* printf("--------------\n"); */
+		printf("\n--------------\n");
+		if(res == NULL)
+			printf("NULL\n");
+		else
+			printf("res = %p\n", res);
+		printf("--------------\n");
 		printf("s1: [%s]\nset: [%c]\n", s, c);
-		/* printf("Expected: [%s]\n", exp); */
-		/* printf("--------------\n"); */
+		printf("Expected: [%s]\n", exp);
+		printf("--------------\n");
 	}
-	res = ft_split(s, c);
 	if (res != NULL)
 		ft_print_list(res);
 	return (0);
