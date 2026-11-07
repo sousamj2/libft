@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 12:03:14 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:22:49 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 
 	size_trim = ft_strlen(trim_s);
 	*nsplits = 0;
-	if (trim_s == NULL || size_trim == 0)
-		return (NULL);
 	while (trim_s != NULL && *trim_s == c)
 		trim_s++;
 	while (trim_s != NULL && *trim_s != '\0')
@@ -69,6 +67,7 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 	retval = ft_calloc((*nsplits + 1), sizeof(char *));
 	if (!retval)
 		return (NULL);
+	retval[0] = NULL;
 	return (retval);
 }
 
