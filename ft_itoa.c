@@ -12,6 +12,14 @@
 
 #include "libft.h"
 
+/**
+ * @brief Allocates buffer and calculates metadata (digits, sign) for itoa.
+ *
+ * @param n_long Pointer to long value of number (made positive if negative).
+ * @param negative Pointer to int set to 1 if n was negative, 0 otherwise.
+ * @param nchars Pointer to size_t to receive total required buffer size.
+ * @return Allocated string buffer with '-' set if negative, or NULL on failure.
+ */
 static char	*ft_itoa_mem(long *n_long, int *negative, size_t *nchars)
 {
 	char	*retval;
@@ -40,6 +48,13 @@ static char	*ft_itoa_mem(long *n_long, int *negative, size_t *nchars)
 	return (retval);
 }
 
+/**
+ * @brief Computes highest base-10 power corresponding to most significant digit.
+ *
+ * @param ndigits Number of digits in the integer.
+ * @param long_n Positive number value.
+ * @return The base 10 divisor matching the most significant digit.
+ */
 static long	ft_get_max_power(size_t ndigits, long long_n)
 {
 	long	power10;

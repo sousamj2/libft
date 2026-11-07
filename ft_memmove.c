@@ -13,6 +13,14 @@
 #include "libft.h"
 #include <string.h>
 
+/**
+ * @brief Copies n bytes safely between overlapping memory regions.
+ *
+ * @param dest Destination memory pointer.
+ * @param src Source memory pointer.
+ * @param n Number of bytes to copy.
+ * @return Pointer to dest.
+ */
 static unsigned char	*ft_overlap(unsigned char *dest,
 							const unsigned char *src, size_t n)
 {

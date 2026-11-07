@@ -15,6 +15,13 @@
 #include <string.h>
 #include <strings.h>
 
+/**
+ * @brief Finds the first index in s1 that does not contain a character in set.
+ *
+ * @param s1 Source string.
+ * @param set Set of characters to trim.
+ * @return Index of first non-matching character, or strlen(s1) if all match.
+ */
 static unsigned int	ft_find_start(char const *s1, char const *set)
 {
 	unsigned int	retval;
@@ -43,6 +50,13 @@ static unsigned int	ft_find_start(char const *s1, char const *set)
 	return (retval);
 }
 
+/**
+ * @brief Counts characters from the end of s1 that are present in set.
+ *
+ * @param s1 Source string.
+ * @param set Set of characters to trim.
+ * @return Number of trailing characters to trim.
+ */
 static size_t	ft_find_stop(char const *s1, char const *set)
 {
 	size_t		retval;

@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+/**
+ * @brief Skips leading whitespace characters in the input string.
+ *
+ * @param nptr Input string.
+ * @return Pointer to the first non-whitespace character in nptr.
+ */
 static char	*ft_remove_space(char *nptr)
 {
 	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
@@ -20,6 +26,13 @@ static char	*ft_remove_space(char *nptr)
 	return (nptr);
 }
 
+/**
+ * @brief Parses an optional '+' or '-' sign and skips leading zeroes.
+ *
+ * @param num Input string pointing past initial whitespace.
+ * @param negative Pointer to int set to 1 if negative sign, 0 otherwise.
+ * @return Pointer to the first significant digit or character.
+ */
 static char	*ft_handle_sign_and_zeros(char *num, int *negative)
 {
 	*negative = 0;
@@ -35,6 +48,12 @@ static char	*ft_handle_sign_and_zeros(char *num, int *negative)
 	return (num);
 }
 
+/**
+ * @brief Validates if the number string is within long bounds.
+ *
+ * @param num Input string after skipping spaces.
+ * @return 1 if valid, -1 if positive overflow, 0 if negative underflow.
+ */
 static int	ft_valid_num(char *num)
 {
 	int	ndigits;

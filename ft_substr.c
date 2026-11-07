@@ -13,6 +13,14 @@
 #include "libft.h"
 #include <stdio.h>
 
+/**
+ * @brief Computes length of substring safely against bounds of string s.
+ *
+ * @param s Source string.
+ * @param start Start index in s.
+ * @param len Desired substring length.
+ * @return Number of characters that can be extracted without exceeding bounds.
+ */
 static size_t	ft_size_alloc(char const *s, unsigned int start, size_t len)
 {
 	size_t	size_str;

@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+/**
+ * @brief Returns the minimum of two size_t values.
+ *
+ * @param val1 First value.
+ * @param val2 Second value.
+ * @return Smaller of val1 and val2.
+ */
 static size_t	ft_getmin(size_t val1, size_t val2)
 {
 	if (val1 > val2)

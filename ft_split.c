@@ -14,6 +14,13 @@
 #include <stddef.h>
 #include <stdio.h>
 
+/**
+ * @brief Finds the index of the next occurrence of character c in string s.
+ *
+ * @param s String to search.
+ * @param c Delimiter character to find.
+ * @return Index of delimiter character c, or length of string if not found.
+ */
 static size_t	ft_next_c(const char *s, int c)
 {
 	size_t	next_c;
@@ -31,6 +38,14 @@ static size_t	ft_next_c(const char *s, int c)
 	return (size_str);
 }
 
+/**
+ * @brief Counts segments separated by delimiter c and allocates string array.
+ *
+ * @param trim_s Input string trimmed of leading/trailing delimiter characters.
+ * @param c Delimiter character.
+ * @param nsplits Pointer to size_t to receive total count of split substrings.
+ * @return Allocated array of strings (NULL-terminated), or NULL on failure.
+ */
 static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 {
 	char	**retval;
@@ -55,6 +70,14 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 	return (retval);
 }
 
+/**
+ * @brief Frees partially allocated string array and trimmed string on error.
+ *
+ * @param s Array of allocated strings.
+ * @param isplit Highest index allocated in s.
+ * @param trim_s Dynamically allocated trimmed string to free.
+ * @return Always returns NULL.
+ */
 static void	*ft_release_mem(char **s, int isplit, char *trim_s)
 {
 	while (isplit >= 0)
@@ -67,6 +90,13 @@ static void	*ft_release_mem(char **s, int isplit, char *trim_s)
 	return (NULL);
 }
 
+/**
+ * @brief Helper that removes leading and trailing delimiter c from string s.
+ *
+ * @param s Input string.
+ * @param c Delimiter character to trim.
+ * @return Newly allocated trimmed string, or NULL on failure.
+ */
 static char	*ft_trim_char(char const *s, char c)
 {
 	char	*trim_s;
