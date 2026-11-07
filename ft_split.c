@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 16:45:28 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:07:13 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static size_t	ft_next_c(const char *s, int c)
 	size_t	size_str;
 
 	next_c = 0;
+	if (s == NULL)
+		return (0);
 	size_str = ft_strlen(s);
 	while (*s != '\0')
 	{
@@ -51,7 +53,11 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 	char	**retval;
 	size_t	size_trim;
 
+	if (trim_s == NULL)
+		return (ft_calloc(1, sizeof(char *)));
 	size_trim = ft_strlen(trim_s);
+	if (size_trim == 0)
+		return (ft_calloc(1, sizeof(char *)));
 	*nsplits = 0;
 	while (trim_s != NULL && *trim_s == c)
 		trim_s++;
@@ -62,8 +68,6 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
 		trim_s++;
 	}
 	(*nsplits)++;
-	if (size_trim == 0)
-		*nsplits = 0;
 	retval = ft_calloc((*nsplits + 1), sizeof(char *));
 	if (!retval)
 		return (NULL);
@@ -79,12 +83,13 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
  * @param trim_s Dynamically allocated trimmed string to free.
  * @return Always returns NULL.
  */
-static void	*ft_release_mem(char **s, long long isplit, char *trim_s)
+static void	*ft_release_mem(char **s, size_t isplit, char *trim_s)
 {
-	while (isplit >= 0)
+	isplit++;
+	while (isplit > 0)
 	{
-		free(s[isplit]);
 		isplit--;
+		free(s[isplit]);
 	}
 	free(s);
 	free(trim_s);
