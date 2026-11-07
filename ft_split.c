@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 12:22:49 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:23:18 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	ft_next_c(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s == c)
-			return (next_c);
+			return (next_c + 1);
 		s++;
 		next_c++;
 	}
@@ -79,7 +79,7 @@ static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
  * @param trim_s Dynamically allocated trimmed string to free.
  * @return Always returns NULL.
  */
-static void	*ft_release_mem(char **s, int isplit, char *trim_s)
+static void	*ft_release_mem(char **s, size_t isplit, char *trim_s)
 {
 	while (isplit >= 0)
 	{
@@ -132,12 +132,12 @@ char	**ft_split(char const *s, char c)
 	while (splits[1] < splits[0])
 	{
 		next_c = ft_next_c(trim_s[1], c);
-		retval[splits[1]] = ft_substr(trim_s[1], 0, next_c);
+		retval[splits[1]] = ft_substr(trim_s[1], 0, next_c - 1);
 		if (!retval[splits[1]])
-			return (ft_release_mem(retval, splits[1], trim_s[1]));
-		trim_s[1] += next_c + 1;
-		if (ft_strlen(retval[splits[1]]) > 0 && retval[splits[1]][0] != '\0')
-			retval[++splits[1]] = NULL;
+			return (ft_release_mem(retval, splits[1], trim_s[0]));
+		trim_s[1] += next_c;
+		if (retval[splits[1]][0] != '\0')
+			splits[1]++;
 		else
 			free(retval[splits[1]]);
 	}

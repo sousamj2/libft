@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 08:19:12 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/04 23:35:59 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:37:05 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	size_dst;
 	size_t	size_src;
 
+	if (dst == NULL || src == NULL)
+		return (0);
 	size_dst = ft_strlen(dst);
 	size_src = ft_strlen(src);
 	if (size < 1)

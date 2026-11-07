@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 09:16:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/05 03:11:59 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:39:21 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	char	*it_little;
 	char	*it_big;
 
+	if (big == NULL || little == NULL)
+		return (NULL);
+	
 	if (*little == '\0')
 		return ((char *)big);
 	while (*big != '\0' && len > 0)
