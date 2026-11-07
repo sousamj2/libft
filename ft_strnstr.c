@@ -6,37 +6,32 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 09:16:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 16:39:21 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 23:21:25 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/bsd.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*it_little;
-	char	*it_big;
+	size_t	match;
+	size_t	size_little;
 
 	if (big == NULL || little == NULL)
 		return (NULL);
-	
 	if (*little == '\0')
 		return ((char *)big);
-	while (*big != '\0' && len > 0)
+	size_little = ft_strlen(little);
+	while (*big != '\0' && len >= size_little)
 	{
-		it_little = (char *) little;
-		it_big = (char *) big;
-		while (*it_little != '\0')
+		match = 0;
+		while (*(little + match) != '\0')
 		{
-			if (*it_little == *it_big && len >= ft_strlen(little))
-			{
-				it_little++;
-				it_big++;
-			}
+			if (*(little + match) == *(big + match))
+				match++;
 			else
 				break ;
-			if (*it_little == '\0')
+			if (*(little + match) == '\0')
 				return ((char *) big);
 		}
 		big++;

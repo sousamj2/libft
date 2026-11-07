@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 12:07:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/04 09:48:15 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 22:52:04 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@
  * @param nptr Input string.
  * @return Pointer to the first non-whitespace character in nptr.
  */
-static char	*ft_remove_space(char *nptr)
-{
-	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
-		|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
-		nptr++;
-	return (nptr);
-}
+static char	*ft_remove_space(char *nptr);
 
 /**
  * @brief Parses an optional '+' or '-' sign and skips leading zeroes.
@@ -33,6 +27,23 @@ static char	*ft_remove_space(char *nptr)
  * @param negative Pointer to int set to 1 if negative sign, 0 otherwise.
  * @return Pointer to the first significant digit or character.
  */
+static char	*ft_handle_sign_and_zeros(char *num, int *negative);
+/**
+ * @brief Validates if the number string is within long bounds.
+ *
+ * @param num Input string after skipping spaces.
+ * @return 1 if valid, -1 if positive overflow, 0 if negative underflow.
+ */
+static int	ft_valid_num(char *num);
+
+static char	*ft_remove_space(char *nptr)
+{
+	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
+		|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
+		nptr++;
+	return (nptr);
+}
+
 static char	*ft_handle_sign_and_zeros(char *num, int *negative)
 {
 	*negative = 0;
@@ -48,12 +59,6 @@ static char	*ft_handle_sign_and_zeros(char *num, int *negative)
 	return (num);
 }
 
-/**
- * @brief Validates if the number string is within long bounds.
- *
- * @param num Input string after skipping spaces.
- * @return 1 if valid, -1 if positive overflow, 0 if negative underflow.
- */
 static int	ft_valid_num(char *num)
 {
 	int	ndigits;
@@ -102,17 +107,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return ((int) signal * result);
 }
-
-/* int main(int argc, char *argv[]) */
-/* { */
-/*     if (argc < 2) */
-/*     { */
-/* 		printf("Not enough args to execute %s.\n",argv[0]); */
-/* 		return (-1); */
-/* 	} */
-/* 	printf("   ATOI [%s] -> [%d]\n", argv[1], atoi(argv[1])); */
-/* 	printf("FT_ATOI [%s] -> [%d]\n", argv[1], ft_atoi(argv[1])); */
-/* 	printf("Long:  %ld - %ld\n", LONG_MIN, LONG_MAX); */
-
-/*     return (0); */
-/* } */

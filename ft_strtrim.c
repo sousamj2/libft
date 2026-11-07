@@ -6,15 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 07:10:38 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 15:05:21 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 22:56:39 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
-#include <strings.h>
 
 /**
  * @brief Finds the first index in s1 that does not contain a character in set.
@@ -23,6 +19,17 @@
  * @param set Set of characters to trim.
  * @return Index of first non-matching character, or strlen(s1) if all match.
  */
+static unsigned int	ft_find_start(char const *s1, char const *set);
+
+/**
+ * @brief Counts characters from the end of s1 that are present in set.
+ *
+ * @param s1 Source string.
+ * @param set Set of characters to trim.
+ * @return Number of trailing characters to trim.
+ */
+static size_t		ft_find_stop(char const *s1, char const *set, size_t size);
+
 static unsigned int	ft_find_start(char const *s1, char const *set)
 {
 	unsigned int	retval;
@@ -51,13 +58,6 @@ static unsigned int	ft_find_start(char const *s1, char const *set)
 	return (retval);
 }
 
-/**
- * @brief Counts characters from the end of s1 that are present in set.
- *
- * @param s1 Source string.
- * @param set Set of characters to trim.
- * @return Number of trailing characters to trim.
- */
 static size_t	ft_find_stop(char const *s1, char const *set, size_t size)
 {
 	size_t		retval;

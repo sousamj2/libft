@@ -6,12 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 22:49:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 16:40:59 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 22:57:51 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 /**
  * @brief Computes length of substring safely against bounds of string s.
@@ -21,6 +20,8 @@
  * @param len Desired substring length.
  * @return Number of characters that can be extracted without exceeding bounds.
  */
+static size_t	ft_size_alloc(char const *s, unsigned int start, size_t len);
+
 static size_t	ft_size_alloc(char const *s, unsigned int start, size_t len)
 {
 	size_t	size_str;

@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 08:19:12 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 16:37:05 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 22:55:21 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
  * @param val2 Second value.
  * @return Smaller of val1 and val2.
  */
+static size_t	ft_getmin(size_t val1, size_t val2);
+
 static size_t	ft_getmin(size_t val1, size_t val2)
 {
 	if (val1 > val2)

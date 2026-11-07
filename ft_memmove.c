@@ -6,12 +6,11 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:01:56 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/04 23:35:08 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 22:54:43 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 /**
  * @brief Copies n bytes safely between overlapping memory regions.
@@ -21,6 +20,9 @@
  * @param n Number of bytes to copy.
  * @return Pointer to dest.
  */
+static unsigned char	*ft_overlap(unsigned char *dest,
+							const unsigned char *src, size_t n);
+
 static unsigned char	*ft_overlap(unsigned char *dest,
 							const unsigned char *src, size_t n)
 {
