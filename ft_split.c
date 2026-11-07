@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 17:07:13 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:12:57 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,31 @@ static size_t	ft_next_c(const char *s, int c)
  * @param nsplits Pointer to size_t to receive total count of split substrings.
  * @return Allocated array of strings (NULL-terminated), or NULL on failure.
  */
-static char	**ft_allocate_string_array(char *trim_s, char c, size_t *nsplits)
+static char	**ft_allocate_string_array(char **trim_s, char c, size_t *nsplits)
 {
 	char	**retval;
-	size_t	size_trim;
 
-	if (trim_s == NULL)
-		return (ft_calloc(1, sizeof(char *)));
-	size_trim = ft_strlen(trim_s);
-	if (size_trim == 0)
-		return (ft_calloc(1, sizeof(char *)));
 	*nsplits = 0;
-	while (trim_s != NULL && *trim_s == c)
-		trim_s++;
-	while (trim_s != NULL && *trim_s != '\0')
+	if (trim_s[1] == NULL)
+		return (NULL);
+	if(trim_s[1][0] == '\0')
 	{
-		if (*trim_s == c && *(trim_s + 1) != c && *(trim_s + 1) != '\0')
+		free(trim_s[0]);
+		return (ft_calloc(1, sizeof(char *)));
+	}
+	while (*trim_s[1] == c)
+		trim_s[1]++;
+	while (*trim_s[1] != '\0')
+	{
+		if (*trim_s[1] == c && *(trim_s[1] + 1) != c && *(trim_s[1] + 1) != '\0')
 			(*nsplits)++;
-		trim_s++;
+		trim_s[1]++;
 	}
 	(*nsplits)++;
 	retval = ft_calloc((*nsplits + 1), sizeof(char *));
 	if (!retval)
-		return (NULL);
+		return (free(trim_s[0]), NULL);
+	trim_s[1] = trim_s[0];
 	retval[0] = NULL;
 	return (retval);
 }
@@ -113,11 +115,6 @@ static char	*ft_trim_char(char const *s, char c)
 	trim_s = ft_strtrim(s, cc);
 	if (trim_s == NULL)
 		return (NULL);
-	if (trim_s[0] == '\0')
-	{
-		free(trim_s);
-		return (NULL);
-	}
 	return (trim_s);
 }
 
@@ -130,7 +127,7 @@ char	**ft_split(char const *s, char c)
 
 	trim_s[0] = ft_trim_char(s, c);
 	trim_s[1] = trim_s[0];
-	retval = ft_allocate_string_array(trim_s[1], c, &splits[0]);
+	retval = ft_allocate_string_array(trim_s, c, &splits[0]);
 	if (retval == NULL)
 		return (NULL);
 	splits[1] = 0;
@@ -138,7 +135,7 @@ char	**ft_split(char const *s, char c)
 	{
 		next_c = ft_next_c(trim_s[1], c);
 		retval[splits[1]] = ft_substr(trim_s[1], 0, next_c - 1);
-		if (!retval[splits[1]])
+		if (retval[splits[1]] == NULL)
 			return (ft_release_mem(retval, splits[1], trim_s[0]));
 		trim_s[1] += next_c;
 		if (retval[splits[1]][0] != '\0')
