@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 11:30:19 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 11:40:44 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,13 @@ static char	*ft_trim_char(char const *s, char c)
 	cc[0] = c;
 	cc[1] = '\0';
 	trim_s = ft_strtrim(s, cc);
+	if (trim_s == NULL)
+		return (NULL);
+	if (trim_s[0])
+	{
+		free(trim_s);
+		return(NULL);
+	}
 	return (trim_s);
 }
 
@@ -118,7 +125,7 @@ char	**ft_split(char const *s, char c)
 	trim_s[0] = ft_trim_char(s, c);
 	trim_s[1] = trim_s[0];
 	retval = ft_allocate_string_array(trim_s[1], c, &splits[0]);
-	if (!retval || retval[0] == NULL || retval[0][0] == '\0' )
+	if (retval  == NULL)
 		return (NULL);
 	splits[1] = 0;
 	while (splits[1] < splits[0])
