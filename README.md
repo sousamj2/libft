@@ -1,56 +1,118 @@
 
 # Table of Contents
 
-1.  [Description](#org2768629)
-2.  [Instructions](#org118810c)
-    1.  [Main Program](#orgc7a79a7)
-    2.  [Additional rules of Makefile](#org0d0cab9)
-    3.  [Testing framework](#org761c294)
+1.  [Description](#org3d8fc43)
+2.  [Instructions](#org91a3c7f)
+    1.  [Main Program](#org957f0a4)
+    2.  [Additional Makefile Rules](#org9742c1f)
+    3.  [Testing Framework](#org7fc809a)
+3.  [Resources](#org14143bf)
+    1.  [Tutorials](#org49ff545)
+    2.  [AI Usage](#org37734e7)
+    3.  [System Setup](#org490d249)
+        1.  [Emacs was the default editor used throughout this project.](#orgb6e6856)
 
-*This project has been created as part of the 42 curriculum by marisous*
+*This project was created as part of the 42 curriculum by marisous*
 
 
-<a id="org2768629"></a>
+<a id="org3d8fc43"></a>
 
 # Description
 
-This project aims to build a static function library libft.a to be used in more advance projects.
+This project aims to build a static library, libft.a, containing functions to be reused in more advanced projects.
 
-Besides the standard C programming, the project gave the developer the first hands on aproach with valgrind and gdb.
+In addition to standard C programming, this project gave the developer their first hands-on experience with Valgrind and GDB.
 
-The project is by definition divided into 3 parts: libc functions, some additional functions and a link list handler.
+The project is divided into three main parts: libc functions, additional functions, and a linked-list handler.
 
-The initial structure of the project follow this partition and three separate directories were created: srcs1, srcs2 and srcs3. As this is often common in the world (and to practice writting rules), the Makefile kept the variables SRC<sub>FOLDER</sub>\_[123], although now the point to the top directory (./)&#x2026;
+The initial project structure followed this division, and three separate directories were created: srcs1, srcs2, and srcs3. Since this is a common practice in software development (and a good opportunity to practise writing Makefile rules), the Makefile retained the variables SRC\\<sub>FOLDER</sub>\\\_[123], even though they now all point to the top-level directory (./). This was placed in the commented section not to interfere with the evaluation.
 
 
-<a id="org118810c"></a>
+<a id="org91a3c7f"></a>
 
 # Instructions
 
 
-<a id="orgc7a79a7"></a>
+<a id="org957f0a4"></a>
 
 ## Main Program
 
-The project is just the creation of the static library lib.a, so running make at the repository folder, compiles all the object files (\*.o) into the "objs/" folder. After, it uses the archive tool (ar) to create the library from the objects.
+The sole purpose of this project is to create the static library libft.a. Running \`make\` from the repository root compiles all the object files (\*.o) into the \`objs/\` directory. It then uses the archive tool (\`ar\`) to create the library from those object files.
 
-Additionally, the required rules are set: all (default), $(NAME), clean, fclean and re. All except $(NAME) are added to the .PHONY rule.
-
-
-<a id="org0d0cab9"></a>
-
-## Additional rules of Makefile
-
-test: prints the 3 main variables: NAME, OBJS and SRCS for cross check.
-
-norm: runs norminette with reduce printouts (only if there are any issues).
-
-eclean: used to prepare the configuration for the emacs editor to use the C language server protocol (LSP). This is an advance feature for emacs users, which I will be happy to demonstrate back in my area&#x2026;
+Additionally, the required Makefile rules are provided: \`all\` (default), \`clean\`, \`fclean\`, and \`re\`. All rules except \`$(NAME)\` are declared as \`.PHONY\`.
 
 
-<a id="org761c294"></a>
+<a id="org9742c1f"></a>
 
-## Testing framework
+## Additional Makefile Rules
 
-You will soon discovered that there is not a single (commented) main function in this project. But that does not mean no test were made. In fact, instead of relying on outsite packages, I have created the puppet (marionnette). They are currently located in the TAG marionnette-01 of this project, which unfortunatelly cannot be a part of the submitted version. I encorage the evaluator to checkout that version with **"git checkout marionnette-01"**, which should just add the folder unitests back to the project. Then, you can run **make unitests** and the get a quick overview of the tests, without using valgrind and with most output removed. More details should be present in that folder.
+-   \`test\`: Prints the three main Makefile variables: NAME, OBJS, and SRCS, for cross-checking.
+
+-   \`norm\`: Runs Norminette with reduced output (only displaying issues, if any).
+
+-   \`eclean\`: Prepares the configuration for Emacs to use the C Language Server Protocol (LSP). This is a more advanced feature for Emacs users, which I would be happy to demonstrate in person!
+
+
+<a id="org7fc809a"></a>
+
+## Testing Framework
+
+You will soon discover that there isn't a single (commented-out) \`main()\` function in this project. But that doesn't mean no tests were performed!
+
+In fact, rather than relying on external testing frameworks, I created my own testing suite, called Marionnette (Puppet). It is currently available in the \`marionnette-01\` tag of this project, which, unfortunately, cannot be included in the submitted version.
+
+I encourage the evaluator to check out that version using:
+
+\`git checkout marionnette-01\`
+
+This should restore the \`unitests/\` directory to the project. You can then run \`make unitests\` to get a quick overview of the tests, without running Valgrind and with most of the output suppressed.
+
+More details about the testing framework can be found in that directory.
+
+
+<a id="org14143bf"></a>
+
+# Resources
+
+
+<a id="org49ff545"></a>
+
+## Tutorials
+
+-   [Compiler and Makefile overview.](<https://www.youtube.com/watch?v=GExnnTaBELk>)
+
+-   [A nice tutorial on Makefile variables.](<https://www.youtube.com/watch?v=z4uPHjxYyPs>)
+
+
+<a id="org37734e7"></a>
+
+## AI Usage
+
+For AI assistance, I set up a ChatGPT project with the following instructions:
+
+"The idea of this project is to answer questions about the C programming language in a similar way to CS50 AI. It should provide hints on how to solve problems, but never give the full answer, allowing me to work things out for myself. However, it may tell me whether my suggestions are correct and summarise the manuals for specific functions."
+
+Additionally, I used an AI agent (Google's Antigravity) to generate the Doxygen documentation for the functions I created. This documentation can be found in the \`libft.h\` header file and in the source files for the static functions.
+
+Finally, this README file was also reviewed by AI for English correctness.
+
+
+<a id="org490d249"></a>
+
+## System Setup
+
+My personal configuration can be found in my dotfiles repository:
+
+<https://github.com/sousamj2/.reticencias.git>
+
+It includes my personal configurations for Emacs, Alacritty, and tmux.
+
+
+<a id="orgb6e6856"></a>
+
+### Emacs was the default editor used throughout this project.
+
+At 42, I had to install a more recent version of Emacs to use my configuration.
+
+My main inspiration for this configuration came from the [System Crafters](<https://www.youtube.com/@SystemCrafters>) YouTube channel.
 
