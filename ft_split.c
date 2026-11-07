@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 17:43:11 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 11:40:44 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 11:45:03 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static char	*ft_trim_char(char const *s, char c)
 	trim_s = ft_strtrim(s, cc);
 	if (trim_s == NULL)
 		return (NULL);
-	if (trim_s[0])
+	if (trim_s[0] == '\0')
 	{
 		free(trim_s);
 		return(NULL);
