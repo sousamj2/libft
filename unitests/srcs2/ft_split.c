@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 18:38:08 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 16:30:09 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 20:52:54 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_print_list(char **split_list)
 		fflush(stdout);
 		free(*split_list);
 		split_list++;
-	/* if (*split_list == NULL) */
-	/* 	printf("NULL\n"); */
+	if (*split_list == NULL)
+		printf("NULL\n");
 	}
 	free(tmp);
 }
@@ -42,10 +42,8 @@ int	main(int argc, char *argv[])
 	int		debug;
 	char	**res;
 
-	s = NULL;
-
-	printf("%lu\n", ft_strlen(s));
-	c = 'a';
+	s = ",,,";
+	c = ',';
 	exp = "...";
 	debug = 1;
 	if (argc == 3)
