@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:36:15 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 08:24:43 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/07 08:27:15 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 
 /**
- * @brief Tests whether c is a 7-bit US-ASCII character.
+ * @brief Tests whether c is a 7-bit ASCII character.
  *
  * @param c Character to test.
  * @return Non-zero if c is between 0 and 127 inclusive, 0 otherwise.
@@ -83,7 +83,7 @@ void			*ft_memset(void *s, int c, size_t n);
 
 /**
  * @brief Erases the data in the n bytes of the memory starting at the location
- * pointed to by s, by writing zeroes ('\\0') to that area.
+ * pointed to by s, by writing zeroes ('\0') to that area.
  *
  * @param s Pointer to the block of memory to clear.
  * @param n Number of bytes to set to zero.
@@ -402,7 +402,7 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 
 /**
  * @brief Deletes and frees the given node and every successor of that node,
- * using the function 'del' and free(3). Finally, the pointer to the list
+ * using the function 'del' and free(). Finally, the pointer to the list
  * is set to NULL.
  *
  * @param lst Address of a pointer to a node.
