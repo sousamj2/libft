@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 16:50:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/01 16:50:21 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/08 15:52:49 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_identity(unsigned int index, char *c)
 {
-	if (index + c == 0)
+	if (*c + index == 'a')
 		return ;
 	else
 		return ;

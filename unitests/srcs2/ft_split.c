@@ -6,13 +6,15 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 18:38:08 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 20:52:54 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/08 15:49:17 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
+
+size_t get_mem_curr();
 
 void	ft_print_list(char **split_list)
 {
@@ -42,8 +44,8 @@ int	main(int argc, char *argv[])
 	int		debug;
 	char	**res;
 
-	s = ",,,";
-	c = ',';
+	s = "aaa";
+	c = 'a';
 	exp = "...";
 	debug = 1;
 	if (argc == 3)
@@ -70,5 +72,8 @@ int	main(int argc, char *argv[])
 		ft_print_list(res);
 		/* printf("--------------\n"); */
 	}
+	if (debug)
+		printf("Current allocation is %lu\n", get_mem_curr());
+	
 	return (0);
 }

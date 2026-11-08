@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 20:25:32 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/03 15:14:29 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/08 16:59:20 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char	*ft_set_filename(void)
 	size_fparts[1] = ft_strlen(file_nparts[1]);
 	filenamesize = size_fparts[0] + size_fparts[1];
 	filename = malloc((filenamesize + 1) * sizeof(char));
+	if (filename == NULL)
+		return (NULL);		
 	ft_bzero(filename, filenamesize + 1);
 	size_fparts[2] = ft_strlcpy(filename, file_nparts[0], size_fparts[0] + 1);
 	if (size_fparts[0] != size_fparts[2])
@@ -77,17 +79,23 @@ int	main(void)
 	int		fd;
 	char	*filename;
 	t_list	*map_test[3];
+	size_t del_i_el;
 
 	srand(time(0));
 	head_el = NULL;
 	char_list = &head_el;
-	nelements = ft_rand(20) + 1;
+	del_i_el = ft_rand(10) + 2;
+	nelements = ft_rand(20) + del_i_el + 2;
 	ielement = 0;
 	while (ielement < nelements)
 	{
 		isfront = ft_rand(2);
 		c = ft_rand_print();
-		content = ft_strdup(&c);
+		content = malloc(2);
+		if (content == NULL)
+			return (1);
+		content[0] = c;
+		content[1] = '\0';		
 		lst_elem = ft_lstnew(content);
 		if (lst_elem == NULL)
 		{
@@ -101,6 +109,8 @@ int	main(void)
 		ielement++;
 	}
 	filename = ft_set_filename();
+	if (filename == NULL)
+		return (1);
 	ft_putendl_fd(filename, 1);
 	fd = open(filename, O_WRONLY | O_CREAT, S_IRWXU);
 	free(filename);
@@ -129,23 +139,41 @@ int	main(void)
 	ft_putendl_fd("", 1);
 	ft_putendl_fd("", fd);
 	map_test[0] = ft_lstrmeli(map_test[0], 0, del_call);
+	if (map_test[0] == NULL)
+	{
+		ft_putendl_fd("Problems with ft_lstrmeli del_call 0", 1);
+		return(1);
+	}
 	ft_putendl_fd("------\ndel 0 call", 1);
 	ft_putendl_fd("------\ndel 0 call", fd);
 	ft_lstiter(map_test[0], print_call_char);
 	ft_lstiter_fd(map_test[0], fd, print_call_char_fd);
-	ft_putendl_fd("\n", 1);
-	ft_putendl_fd("\n", fd);
+	ft_putendl_fd("", 1);
+	ft_putendl_fd("", fd);
 	ft_putendl_fd("\n------\nupper call", 1);
 	ft_putendl_fd("\n------\nupper call", fd);
 	ft_lstiter(map_test[1], print_call_char);
 	ft_lstiter_fd(map_test[1], fd, print_call_char_fd);
-	map_test[1] = ft_lstrmeli(map_test[1], 3, del_call);
-	ft_putendl_fd("\n------\ndel 2 call", 1);
-	ft_putendl_fd("\n------\ndel 2 call", fd);
+	map_test[1] = ft_lstrmeli(map_test[1], del_i_el, del_call);
+	if (map_test[1] == NULL)
+	{
+		ft_putstr_fd("Problems with ft_lstrmeli del_call ", 1);
+		ft_putnbr_fd(del_i_el, 1);
+		ft_putendl_fd("", 1);
+		return(1);
+	}
+	ft_putstr_fd("\n------\ndel ", 1);
+	ft_putstr_fd("\n------\ndel ", fd);
+	ft_putnbr_fd(del_i_el, 1);
+	ft_putnbr_fd(del_i_el, fd);
+	ft_putendl_fd(" call.", 1);
+	ft_putendl_fd(" call.", fd);
+
+	
 	ft_lstiter(map_test[1], print_call_char);
 	ft_lstiter_fd(map_test[1], fd, print_call_char_fd);
-	ft_putendl_fd("\n", 1);
-	ft_putendl_fd("\n", fd);
+	ft_putendl_fd("", 1);
+	ft_putendl_fd("", fd);
 	ft_putendl_fd("------\nlower call", 1);
 	ft_putendl_fd("------\nlower call", fd);
 	ft_lstiter(map_test[2], print_call_char);

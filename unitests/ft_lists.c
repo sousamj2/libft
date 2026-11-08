@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 20:39:58 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/03 14:30:23 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/08 16:49:36 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	*copy_call(void *c)
 	char	*ptr;
 
 	ptr = ft_strdup((char *)c);
+	if (ptr == NULL)
+		return (NULL);
 	return (ptr);
 }
 
@@ -60,12 +62,14 @@ void	print_call_str_fd(void *c, int fd)
 
 void	*upper_call_char(void *c)
 {
-	char	letter;
-	char	*ptr;
+	char	*letter;
 
-	letter = ft_toupper(*((char *)c));
-	ptr = ft_strdup(&letter);
-	return (ptr);
+	letter = malloc(2);
+	if (letter == NULL)
+		return (NULL);
+	letter[0] = ft_toupper(*((char *)c));
+	letter[1] = '\0';
+	return (letter);
 }
 
 void	*upper_call_srt(void *c)
@@ -86,12 +90,14 @@ void	*lower_call_srt(void *c)
 
 void	*lower_call_char(void *c)
 {
-	char	letter;
-	char	*ptr;
+	char	*letter;
 
-	letter = ft_tolower(*((char *)c));
-	ptr = ft_strdup(&letter);
-	return (ptr);
+	letter = malloc(2);
+	if (letter == NULL)
+		return (NULL);
+	letter[0] = ft_tolower(*((char *)c));
+	letter[1] = '\0';
+	return (letter);
 }
 
 char	ft_upper(unsigned int index, char c)
@@ -135,7 +141,7 @@ void	*ft_lstrmeli(t_list *lst, size_t to_delete, void (*del) (void *))
 	t_list	*lst_el;
 	t_list	*prev;
 
-	if (lst == NULL || ft_lstsize(lst) < to_delete)
+	if (lst == NULL || ft_lstsize(lst) <= to_delete)
 		return (NULL);
 	if (to_delete == 0)
 	{

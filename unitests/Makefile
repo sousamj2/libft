@@ -2,6 +2,8 @@ VALG	= 1
 ASAN	= 0
 DEBUG	= -g -O0
 QUIET	= 0
+RMRUN	= 1
+NMEM	= 0
 Q = $(if $(filter 1,$(QUIET)),@,)
 
 CC	= cc -std=c99 -D_DEFAULT_SOURCE
@@ -10,6 +12,7 @@ CFLAGS	+= -I..
 CFLAGS	+= -L..
 LIBS	+= -lft -lc -lbsd
 PREXEC	= ulimit -v 131072; timeout 5s
+MALLOC	= -Wl,--wrap=malloc,--wrap=free
 
 ifeq ($(VALG),1)
 	EXEC	= valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 --track-origins=yes -s
@@ -37,15 +40,16 @@ UNITS_01	= 	isalpha isdigit isalnum isascii isprint \
 			memchr memcmp strnstr atoi \
 			calloc strdup
 
-
 RAND_UNITS_02	= 	putchar_fd putstr_fd putendl_fd putnbr_fd
 
 MEMO_UNITS_02	= 	
 
 UNITS_02	= 	test_strjoin test_strtrim test_substr test_split \
 			test_itoa test_strmapi test_striteri test_putchar_fd \
-			test_putstr_fd test_putendl_fd test_putnbr_fd 
-
+			test_putstr_fd test_putendl_fd test_putnbr_fd \
+			strjoin strtrim substr split \
+			itoa strmapi striteri putchar_fd \
+			putstr_fd putendl_fd putnbr_fd 
 
 RAND_UNITS_03	= 	arraylist  charlist  intlist  strlist
 
@@ -54,6 +58,9 @@ MEMO_UNITS_03	=
 LIST_UNITS_03	= 	arraylist  charlist  intlist  strlist
 
 UNITS_03	= 	charlist # intlist  strlist arraylist  
+
+MALLOC_UNITS_02	=	split itoa strjoin substr
+MALLOC_UNITS_03	=	charlist
 
 all: libft $(UNITS_01) $(UNITS_02) $(UNITS_03)
 
@@ -94,25 +101,42 @@ norm $(addprefix build3_, $(MEMO_UNITS_03)) : AUX += ft_memory.c
 
 norm $(addprefix build3_, $(LIST_UNITS_03)) : AUX += ft_lists.c
 
-build1_%: srcs1/ft_%.c
-	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
+$(addprefix build1_, $(MALLOC_UNITS_01)) \
+$(addprefix build2_, $(MALLOC_UNITS_02)) \
+$(addprefix build3_, $(MALLOC_UNITS_03)) : LFLAGS += $(MALLOC)
 
-build2_%: srcs2/ft_%.c
-	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
+$(addprefix build1_, $(MALLOC_UNITS_01)) \
+$(addprefix build2_, $(MALLOC_UNITS_02)) \
+$(addprefix build3_, $(MALLOC_UNITS_03)) : AUX += ft_malloc.c
 
-build3_%: srcs3/test_%.c
-	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LIBS)
+$(addprefix build1_, $(MALLOC_UNITS_01)) \
+$(addprefix build2_, $(MALLOC_UNITS_02)) \
+$(addprefix build3_, $(MALLOC_UNITS_03)) : CFLAGS +=  -DCHECK_MEM_NUM=$(NMEM)
+
+
+build1_%: srcs1/ft_%.c $(AUX)
+	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LFLAGS) $(LIBS)
+
+build2_%: srcs2/ft_%.c $(AUX)
+	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LFLAGS) $(LIBS)
+
+build3_%: srcs3/test_%.c $(AUX)
+	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LFLAGS) $(LIBS)
 
 %: build1_%
-	$(Q)$(PREXEC) $(EXEC) ./run_$@
-	# $(Q)rm -f ./run_$@
+	$(Q)$(PREXEC) $(EXEC) ./run_$@  $(ARGS)
+ifeq ($(RMRUN),0)
+	$(Q)rm -f ./run_$@
+endif
 
 %: build2_%
 	@echo --------------------
-	$(Q)$(PREXEC) $(EXEC) ./run_$@
+	$(Q)$(PREXEC) $(EXEC) ./run_$@ $(ARGS)
 	@echo --------------------
 	@echo "Exit status $$?"
+ifeq ($(RMRUN),1)
 	$(Q)rm -f ./run_$@
+endif
 	@echo "Exit status $$?"
 
 %: build3_%
@@ -122,8 +146,10 @@ build3_%: srcs3/test_%.c
 	@echo Starting linked list checks:
 	@echo =============================
 	@echo
-	$(Q)$(PREXEC) $(EXEC) ./run_$@
+	$(Q)$(PREXEC) $(EXEC) ./run_$@ $(ARGS)
+ifeq ($(RMRUN),1)
 	$(Q)rm -f ./run_$@
+endif
 
 build:	$(addprefix build1_, $(UNITS_01)) \
 	$(addprefix build2_, $(UNITS_02)) \

@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/31 23:56:49 by marisous          #+#    #+#              #
-#    Updated: 2026/11/05 01:16:59 by marisous         ###   ########.fr        #
+#    Updated: 2026/11/08 15:50:28 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,7 +14,7 @@ import random
 import string
 import subprocess
 
-debug = True
+debug = False
 
 Ntests = 1000
 if debug:
