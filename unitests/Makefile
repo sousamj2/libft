@@ -4,12 +4,19 @@ DEBUG	= -g -O0
 QUIET	= 0
 RMRUN	= 1
 NMEM	= 0
+
+EVALUSER = gluciano
+
+PROJECTS = /home/marisous/Projects42/libft/
+TESTDIR = /home/marisous/evals/libft/$(EVALUSER)/
+# TESTDIR = ..
+
 Q = $(if $(filter 1,$(QUIET)),@,)
 
 CC	= cc -std=c99 -D_DEFAULT_SOURCE
 CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	+= -I..
-CFLAGS	+= -L..
+CFLAGS	+= -I$(TESTDIR)
+CFLAGS	+= -L$(TESTDIR)
 LIBS	+= -lft -lc -lbsd
 PREXEC	= ulimit -v 131072; timeout 5s
 MALLOC	= -Wl,--wrap=malloc,--wrap=free
@@ -124,7 +131,7 @@ build3_%: srcs3/test_%.c $(AUX)
 	$(Q)$(CC) $(CFLAGS) $(DEBUG) $(COMP) $(AUX) $< -o ./run_$* $(LFLAGS) $(LIBS)
 
 %: build1_%
-	$(Q)$(PREXEC) $(EXEC) ./run_$@  $(ARGS)
+	$(Q)$(PREXEC) $(EXEC) ./run_$@ $(ARGS)
 ifeq ($(RMRUN),0)
 	$(Q)rm -f ./run_$@
 endif
@@ -156,7 +163,7 @@ build:	$(addprefix build1_, $(UNITS_01)) \
 	$(addprefix build3_, $(UNITS_03))
 
 test_%: build2_%
-	python ${PROJECTS}/libft/unitests/srcs2/ft_$*.py
+	python $(PROJECTS)/unitests/srcs2/ft_$*.py
 
 clean:
 	rm -f $(addprefix run_, $(UNITS_01))

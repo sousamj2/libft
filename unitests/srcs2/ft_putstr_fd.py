@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/01 16:10:37 by marisous          #+#    #+#              #
-#    Updated: 2026/11/01 16:10:37 by marisous         ###   ########.fr        #
+#    Updated: 2026/11/10 13:27:51 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ import subprocess
 import time
 import os
 
-debug = True
+debug = False
 
 Ntests = 1000
 if debug:
