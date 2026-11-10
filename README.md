@@ -1,3 +1,4 @@
+*This project was created as part of the 42 curriculum by marisous*
 
 # Table of Contents
 
@@ -11,8 +12,6 @@
     2.  [AI Usage](#org37734e7)
     3.  [System Setup](#org490d249)
         1.  [Emacs was the default editor used throughout this project.](#orgb6e6856)
-
-*This project was created as part of the 42 curriculum by marisous*
 
 
 <a id="org3d8fc43"></a>
