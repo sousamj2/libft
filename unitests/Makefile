@@ -5,7 +5,7 @@ QUIET	= 0
 RMRUN	= 1
 NMEM	= 0
 
-EVALUSER = gluciano
+EVALUSER = pde-lemo
 
 PROJECTS = /home/marisous/Projects42/libft/
 TESTDIR = /home/marisous/evals/libft/$(EVALUSER)/

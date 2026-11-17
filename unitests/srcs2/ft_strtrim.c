@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 12:18:05 by marisous          #+#    #+#             */
-/*   Updated: 2026/11/07 14:16:25 by marisous         ###   ########.fr       */
+/*   Updated: 2026/11/17 18:01:51 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 
 	s1 = "abcde";
 	set = "ace";
-	exp = "";
+	exp = "bcd";
 	debug = 1;
 	if (argc == 3)
 	{

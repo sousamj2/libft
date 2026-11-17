@@ -15,3 +15,4 @@ createFiles.sh
 # Others (added individually)
 compile_commands.json
 .cache/
+/instructions.txt
